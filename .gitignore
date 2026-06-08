@@ -28,3 +28,6 @@ build/
 out/
 .next/
 .turbo/
+
+# Local design reference (not for commit)
+.design-reference*

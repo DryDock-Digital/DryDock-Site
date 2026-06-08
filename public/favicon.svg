@@ -1,0 +1,7 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drydock icon">
+  <rect width="64" height="64" rx="15" fill="#0E2436"/>
+  <g transform="translate(0,1)">
+    <path d="M14 16 L14 44 Q14 52 22 52 L42 52 Q50 52 50 44 L50 16" stroke="#19B9C2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M19 24 L45 24 L40 36 Q32 41 24 36 Z" fill="#FFFFFF"/>
+  </g>
+</svg>
