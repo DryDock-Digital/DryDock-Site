@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Link, navigate } from '../../lib/router'
+import { Link } from '../../lib/router'
 import { getPostBySlug } from '../../blog/posts'
 import { WaterlineWave } from '../WaterlineWave'
 
@@ -39,6 +39,7 @@ export function BlogPost({ slug }: Props) {
   }
 
   const Body = post.Body
+  const CTA = post.CTA
 
   return (
     <main className="blog-page">
@@ -70,39 +71,8 @@ export function BlogPost({ slug }: Props) {
               <Body />
             </div>
 
-            {/* End-of-post conversion block — drops the reader on Calendly. */}
-            <aside className="blog-cta">
-              <div className="blog-cta-inner">
-                <p className="eyebrow teal">Production-Readiness Audit</p>
-                <h2>Want a second set of eyes on your RLS?</h2>
-                <p>
-                  Drydock runs a Production-Readiness Audit on React + Supabase apps. A senior
-                  engineer reviews your app against every common failure mode, including the exact
-                  RLS issue behind CVE-2025-48757, and hands you a plain-English report in 3
-                  business days.
-                </p>
-                <p>
-                  It&rsquo;s <strong>$750</strong>, and the full amount comes off the price if you
-                  decide to have us fix what we find.
-                </p>
-                <div className="blog-cta-row">
-                  <a
-                    href="/#book"
-                    className="btn btn-teal"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      navigate('/#book')
-                    }}
-                  >
-                    Book your audit →
-                  </a>
-                  <p className="blog-cta-micro">
-                    No judgment. We&rsquo;ve seen this exact issue a hundred times, and it&rsquo;s
-                    always fixable.
-                  </p>
-                </div>
-              </div>
-            </aside>
+            {/* End-of-post conversion block — copy lives in the post's CTA component */}
+            <CTA />
           </div>
         </div>
       </article>

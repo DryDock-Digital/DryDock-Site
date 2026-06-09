@@ -1,3 +1,5 @@
+import { BlogCTA } from '../components/blog/BlogCTA'
+
 /**
  * Body of the "Supabase RLS Not Working" blog post.
  * Rendered inside the .prose container in BlogPost — see src/index.css for
@@ -231,5 +233,24 @@ with check ( (select auth.uid()) = user_id );`}</code>
         problem after your users do.
       </p>
     </>
+  )
+}
+
+export function SupabaseRLSCTA() {
+  return (
+    <BlogCTA
+      heading="Want a second set of eyes on your RLS?"
+      micro="No judgment. We've seen this exact issue a hundred times, and it's always fixable."
+    >
+      <p>
+        Drydock runs a Production-Readiness Audit on React + Supabase apps. A senior engineer
+        reviews your app against every common failure mode, including the exact RLS issue behind
+        CVE-2025-48757, and hands you a plain-English report in 3 business days.
+      </p>
+      <p>
+        It&rsquo;s <strong>$750</strong>, and the full amount comes off the price if you decide
+        to have us fix what we find.
+      </p>
+    </BlogCTA>
   )
 }
