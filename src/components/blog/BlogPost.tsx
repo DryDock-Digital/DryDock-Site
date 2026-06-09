@@ -48,9 +48,7 @@ export function BlogPost({ slug }: Props) {
             <Link to="/blog" className="blog-backlink">
               ← Back to blog
             </Link>
-            <p className="eyebrow reveal" style={{ marginTop: 24 }}>
-              {post.category}
-            </p>
+            <p className="eyebrow reveal">{post.category}</p>
             <h1 className="blog-h1 reveal">{post.title}</h1>
             <div className="blog-post-meta reveal">
               <span>{formatDate(post.date)}</span>

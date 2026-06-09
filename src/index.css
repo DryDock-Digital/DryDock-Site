@@ -2634,11 +2634,19 @@
 
 /* ---------- BLOG POST ---------- */
 .blog-post-header {
-  padding-top: 64px;
+  padding-top: 80px;
   padding-bottom: 0;
 }
+/* The back link sits ABOVE the post title block. display:flex + width:fit-content
+   gives it its own row (block-level) while keeping the hover/hit area limited to
+   the text width — and unlike `inline-block`, the next sibling (.eyebrow) starts
+   on a new line below. */
 .blog-backlink {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 6px;
+  margin-bottom: 56px;
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.04em;
@@ -2859,7 +2867,10 @@
     font-size: 22px;
   }
   .blog-post-header {
-    padding-top: 36px;
+    padding-top: 44px;
+  }
+  .blog-backlink {
+    margin-bottom: 36px;
   }
   .blog-body {
     padding: 40px 0 64px;
