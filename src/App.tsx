@@ -1,3 +1,6 @@
+import { useEffect } from 'react'
+import { BlogIndex } from './components/blog/BlogIndex'
+import { BlogPost } from './components/blog/BlogPost'
 import { Emergency } from './components/Emergency'
 import { FAQ } from './components/FAQ'
 import { FinalCTA } from './components/FinalCTA'
@@ -12,18 +15,57 @@ import { SocialProof } from './components/SocialProof'
 import { Triage } from './components/Triage'
 import { WhatWeDo } from './components/WhatWeDo'
 import { WhyDrydock } from './components/WhyDrydock'
-import { usePageInteractions, useTriageRoute } from './hooks/usePageInteractions'
+import { usePageInteractions } from './hooks/usePageInteractions'
+import { navigate, useRoute } from './lib/router'
+
+const LANDING_TITLE = 'Drydock — You built it with AI. We make it real.'
+const LANDING_DESC =
+  'Senior React + Supabase engineers who audit and fix AI-built apps. A $750 production-readiness audit in 3 days — secured, hardened, and ready for real users.'
 
 export default function App() {
-  // Wire up scroll-progress, scroll reveal, and the html.anim toggle.
+  // Wire up scroll-progress, scroll reveal, html.anim toggle (re-runs per route
+  // because each route mounts a fresh tree of .reveal elements).
   usePageInteractions()
-  // Hash-based "view" router for the dedicated triage screen.
-  const triage = useTriageRoute()
 
-  if (triage.isTriage) {
-    return <Triage onBack={triage.close} />
+  const { path } = useRoute()
+
+  // Reset meta to the landing defaults when we leave a sub-route.
+  useEffect(() => {
+    if (path === '/') {
+      document.title = LANDING_TITLE
+      setMeta('description', LANDING_DESC)
+    }
+  }, [path])
+
+  // ----- Route table -----
+
+  if (path === '/triage') {
+    return <Triage onBack={() => navigate('/')} />
   }
 
+  if (path === '/blog') {
+    return (
+      <>
+        <SiteHeader />
+        <BlogIndex />
+        <Footer />
+      </>
+    )
+  }
+
+  // /blog/<slug>
+  if (path.startsWith('/blog/')) {
+    const slug = path.slice('/blog/'.length).replace(/\/$/, '')
+    return (
+      <>
+        <SiteHeader />
+        <BlogPost slug={slug} />
+        <Footer />
+      </>
+    )
+  }
+
+  // Default — landing page
   return (
     <>
       <SiteHeader />
@@ -32,7 +74,7 @@ export default function App() {
         <Problem />
         {/* Emergency strip surfaced HIGH on the page, right after the Problem section
             (per the design's final iteration — not buried near the FAQ). */}
-        <Emergency onTriage={triage.open} />
+        <Emergency />
         <WhatWeDo />
         {/* The interactive centerpiece. */}
         <SampleReport />
@@ -43,7 +85,17 @@ export default function App() {
         <FAQ />
         <FinalCTA />
       </main>
-      <Footer onTriage={triage.open} />
+      <Footer />
     </>
   )
+}
+
+function setMeta(name: string, content: string) {
+  let el = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`)
+  if (!el) {
+    el = document.createElement('meta')
+    el.setAttribute('name', name)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('content', content)
 }

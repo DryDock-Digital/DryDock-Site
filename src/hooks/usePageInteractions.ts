@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 /**
  * Page-level effects ported from drydock.js:
@@ -86,42 +86,5 @@ export function usePageInteractions() {
   }, [])
 }
 
-/**
- * Hash-based "view" router for the dedicated emergency triage screen.
- * `#triage` shows the triage view; anything else shows the landing page.
- * Mirrors the design's `body.view-triage` toggle.
- */
-export function useTriageRoute(): {
-  isTriage: boolean
-  open: () => void
-  close: () => void
-} {
-  const initial = typeof window !== 'undefined' && window.location.hash === '#triage'
-  const [isTriage, setIsTriage] = useState(initial)
-
-  useEffect(() => {
-    function onHash() {
-      setIsTriage(window.location.hash === '#triage')
-      window.scrollTo(0, 0)
-    }
-    window.addEventListener('hashchange', onHash)
-    return () => window.removeEventListener('hashchange', onHash)
-  }, [])
-
-  function open() {
-    if (window.location.hash !== '#triage') {
-      window.history.pushState(null, '', '#triage')
-    }
-    setIsTriage(true)
-    window.scrollTo(0, 0)
-  }
-  function close() {
-    if (window.location.hash) {
-      window.history.pushState(null, '', window.location.pathname + window.location.search)
-    }
-    setIsTriage(false)
-    window.scrollTo(0, 0)
-  }
-
-  return { isTriage, open, close }
-}
+// useTriageRoute was a hash-based view toggle; replaced by the path-based
+// router in src/lib/router.ts (which also handles /blog and /blog/<slug>).

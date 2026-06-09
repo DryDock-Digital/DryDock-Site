@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react'
 import { CONTACT_EMAIL, EMERGENCY_EMAIL, TRIAGE_FORM_ENDPOINT } from '../constants'
 import { submitForm } from '../lib/submitForm'
+import { Link } from '../lib/router'
 import { Logo } from './Logo'
 
 /**
@@ -62,15 +63,15 @@ export function Triage({ onBack }: Props) {
           {/* Top header bar — gives the triage view its own clean nav,
               fixes the earlier "headerless" layout. */}
           <div className="triage-header">
-            <button
+            <Link
+              to="/"
               className="triage-home"
-              type="button"
-              onClick={onBack}
               aria-label="Back to Drydock home"
+              onClick={() => onBack()}
             >
               <Logo size={28} />
               <span className="logo-word">Drydock</span>
-            </button>
+            </Link>
             <button className="triage-back" type="button" onClick={onBack}>
               <svg
                 viewBox="0 0 24 24"

@@ -4,6 +4,12 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/((?!assets/|favicon\\.svg|sample-audit-report\\.pdf|robots\\.txt|sitemap\\.xml).*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

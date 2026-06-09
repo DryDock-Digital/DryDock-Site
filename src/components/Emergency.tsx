@@ -1,6 +1,6 @@
-type Props = { onTriage: () => void }
+import { navigate } from '../lib/router'
 
-export function Emergency({ onTriage }: Props) {
+export function Emergency() {
   return (
     <section className="emergency" aria-label="Emergency triage">
       <div className="container">
@@ -22,7 +22,7 @@ export function Emergency({ onTriage }: Props) {
             <span className="light">We offer 48-hour emergency triage.</span>
           </span>
         </div>
-        <button type="button" className="e-cta" onClick={onTriage}>
+        <button type="button" className="e-cta" onClick={() => navigate('/triage')}>
           Get emergency help
           <svg
             viewBox="0 0 24 24"

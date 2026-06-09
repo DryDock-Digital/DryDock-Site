@@ -1,18 +1,17 @@
-import { Logo } from './Logo'
 import { CONTACT_EMAIL } from '../constants'
+import { Link } from '../lib/router'
+import { Logo } from './Logo'
 
-type Props = { onTriage: () => void }
-
-export function Footer({ onTriage }: Props) {
+export function Footer() {
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           <div>
-            <a className="logo" href="#top" aria-label="Drydock — home">
+            <Link to="/" className="logo" aria-label="Drydock — home">
               <Logo variant="footer" size={32} />
               <span className="logo-word">Drydock</span>
-            </a>
+            </Link>
             <p className="blurb">
               Senior engineers who take Lovable, Bolt, v0, and Cursor apps from fragile prototype
               to production-grade.
@@ -25,34 +24,25 @@ export function Footer({ onTriage }: Props) {
           <div>
             <h4>Service</h4>
             <ul>
-              <li><a href="#what-we-do">The audit</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-              <li><a href="#how">How it works</a></li>
+              <li><Link to="/#what-we-do">The audit</Link></li>
+              <li><Link to="/#pricing">Pricing</Link></li>
+              <li><Link to="/#how">How it works</Link></li>
             </ul>
           </div>
           <div>
-            <h4>Proof</h4>
+            <h4>Resources</h4>
             <ul>
-              <li><a href="#report">Sample report</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li><Link to="/#report">Sample report</Link></li>
+              <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/#faq">FAQ</Link></li>
             </ul>
           </div>
           <div>
             <h4>Contact</h4>
             <ul>
               <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
-              <li><a href="#book">Book your audit</a></li>
-              <li>
-                <a
-                  href="#triage"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    onTriage()
-                  }}
-                >
-                  Emergency triage
-                </a>
-              </li>
+              <li><Link to="/#book">Book your audit</Link></li>
+              <li><Link to="/triage">Emergency triage</Link></li>
             </ul>
           </div>
         </div>
