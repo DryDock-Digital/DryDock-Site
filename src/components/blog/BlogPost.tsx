@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useBlogPostAnalytics } from '../../hooks/useBlogPostAnalytics'
 import { Link } from '../../lib/router'
 import { getPostBySlug } from '../../blog/posts'
 import { WaterlineWave } from '../WaterlineWave'
@@ -7,6 +8,10 @@ type Props = { slug: string }
 
 export function BlogPost({ slug }: Props) {
   const post = getPostBySlug(slug)
+
+  // Scroll-depth + completion tracking. Vercel auto-tracks pageview +
+  // time-on-page; this fills in how far they actually got through the post.
+  useBlogPostAnalytics(post?.slug || '')
 
   // Update <title>, meta description, and OG tags per post.
   useEffect(() => {

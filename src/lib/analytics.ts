@@ -26,6 +26,11 @@ export type AnalyticsEvent =
   // Content engagement
   | 'sample_report_viewed'
   | 'external_email_clicked'
+  // Blog reader engagement — pageviews handle "they arrived",
+  // these answer "did they actually read it and how far"
+  | 'blog_post_opened'
+  | 'blog_post_read'
+  | 'blog_post_completed'
 
 type EventProps = Record<string, string | number | boolean | null>
 
