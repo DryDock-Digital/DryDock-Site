@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { BOOK_HREF } from '../constants'
+import { BOOK_HREF, SCANNER_URL } from '../constants'
 import { animateCount, setGauge, useOnceInView } from '../hooks/useGaugeAndCounter'
 import { track } from '../lib/analytics'
 import { WaterlineWave } from './WaterlineWave'
@@ -111,6 +111,17 @@ export function Hero() {
                 </svg>
               </a>
             </div>
+            <p className="hero-scanner-link reveal">
+              Or check yours yourself —{' '}
+              <a
+                href={SCANNER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track('scanner_opened', { location: 'hero' })}
+              >
+                free 30-sec exposure scan&nbsp;→
+              </a>
+            </p>
             <div className="hero-trust reveal">
               <span><i className="dot" /> 20-min call, no commitment</span>
               <span><i className="dot" /> Fixed-price $750 audit if it&rsquo;s a fit</span>

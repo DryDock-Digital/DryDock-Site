@@ -30,3 +30,8 @@ export const EMERGENCY_EMAIL = CONTACT_EMAIL
 // The in-page anchor every "book" CTA points at — drops the visitor onto
 // the Calendly embed at the bottom of the page. No automatic payments.
 export const BOOK_HREF = '#book'
+
+// Free public exposure scanner — the top-of-funnel self-serve tool. Lives on
+// its own subdomain so it can be sandboxed (separate Fly app, separate runbook)
+// while still feeding leads into the main pipeline.
+export const SCANNER_URL = 'https://scan.drydock.digital'

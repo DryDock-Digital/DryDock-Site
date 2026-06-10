@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL } from '../constants'
+import { CONTACT_EMAIL, SCANNER_URL } from '../constants'
 import { track } from '../lib/analytics'
 import { Link } from '../lib/router'
 import { Logo } from './Logo'
@@ -33,6 +33,16 @@ export function Footer() {
           <div>
             <h4>Resources</h4>
             <ul>
+              <li>
+                <a
+                  href={SCANNER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => track('scanner_opened', { location: 'footer' })}
+                >
+                  Free Supabase scanner
+                </a>
+              </li>
               <li><Link to="/#report">Sample report</Link></li>
               <li><Link to="/blog">Blog</Link></li>
               <li><Link to="/#faq">FAQ</Link></li>

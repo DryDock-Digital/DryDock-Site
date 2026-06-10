@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { BOOK_HREF } from '../constants'
+import { BOOK_HREF, SCANNER_URL } from '../constants'
 import { animateCount, setGauge, useOnceInView } from '../hooks/useGaugeAndCounter'
 import { track } from '../lib/analytics'
 
@@ -415,13 +415,27 @@ export function SampleReport() {
               </svg>
               Full report includes a 20-minute walkthrough call.
             </div>
-            <a
-              href={BOOK_HREF}
-              className="btn btn-teal btn-sm"
-              onClick={() => track('cta_book_clicked', { location: 'sample_report' })}
-            >
-              Get this report for your app
-            </a>
+            <div className="report-foot-actions">
+              <a
+                href={SCANNER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="linkarrow report-foot-scan"
+                onClick={() => track('scanner_opened', { location: 'sample_report' })}
+              >
+                Or try a free 30-sec scan first
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+              <a
+                href={BOOK_HREF}
+                className="btn btn-teal btn-sm"
+                onClick={() => track('cta_book_clicked', { location: 'sample_report' })}
+              >
+                Get this report for your app
+              </a>
+            </div>
           </div>
         </div>
       </div>
