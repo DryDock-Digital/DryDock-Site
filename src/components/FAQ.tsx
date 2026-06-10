@@ -18,6 +18,10 @@ const faqs = [
     a: 'We specialize in React + Supabase apps, which covers most apps built with Lovable, Bolt, v0, and Cursor. Not sure what you’ve got? Book an audit and we’ll figure it out together.',
   },
   {
+    q: 'I’m using Lovable Cloud — does that change anything?',
+    a: 'Nope, you’re in the right place. Lovable Cloud is Supabase with the setup smoothed out — same Postgres database, same anon key in the browser, same RLS deciding who can see what. The things that quietly break in a regular Lovable + Supabase app break the same way under Cloud. Every check we run and every fix we make applies identically.',
+  },
+  {
     q: 'What do you need from me to start?',
     a: 'A 20-minute intro call so we can see whether it’s a fit. If we both agree, read access to your code repository and a short description of what the app does. That’s it.',
   },
