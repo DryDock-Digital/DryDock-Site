@@ -1,4 +1,5 @@
 import { BOOK_HREF } from '../constants'
+import { track } from '../lib/analytics'
 import { CalendlyEmbed } from './CalendlyEmbed'
 import { LeadForm } from './LeadForm'
 import { WaterlineWave } from './WaterlineWave'
@@ -20,7 +21,11 @@ export function FinalCTA() {
             no upfront charges through the site — and the full amount comes off your fix.
           </p>
           <div className="final-cta-row reveal">
-            <a href={BOOK_HREF} className="btn btn-teal" data-analytics="final-cta">
+            <a
+              href={BOOK_HREF}
+              className="btn btn-teal"
+              onClick={() => track('cta_book_clicked', { location: 'final' })}
+            >
               Book a free intro call
             </a>
             <p className="final-micro">

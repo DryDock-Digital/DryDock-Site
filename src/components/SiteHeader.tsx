@@ -1,3 +1,4 @@
+import { track } from '../lib/analytics'
 import { Link, useRoute } from '../lib/router'
 import { Logo } from './Logo'
 
@@ -42,7 +43,11 @@ export function SiteHeader() {
           )}
         </nav>
         <div>
-          <Link to="/#book" className="btn btn-primary btn-sm">
+          <Link
+            to="/#book"
+            className="btn btn-primary btn-sm"
+            onClick={() => track('cta_book_clicked', { location: 'header' })}
+          >
             Book a call
           </Link>
         </div>

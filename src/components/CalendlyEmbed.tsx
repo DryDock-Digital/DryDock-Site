@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { CALENDLY_URL } from '../constants'
+import { track } from '../lib/analytics'
+import { useOnceInView } from '../hooks/useGaugeAndCounter'
 
 const CALENDLY_SCRIPT_SRC = 'https://assets.calendly.com/assets/external/widget.js'
 
@@ -14,6 +16,9 @@ const CALENDLY_SCRIPT_SRC = 'https://assets.calendly.com/assets/external/widget.
  */
 export function CalendlyEmbed() {
   const containerRef = useRef<HTMLDivElement>(null)
+  // Fire an analytics event the first time the booking widget enters view —
+  // gives us the "saw the Calendly" denominator for the booking funnel.
+  const viewRef = useOnceInView(() => track('calendly_viewed'), 0.3)
 
   // Build the widget URL with theme params matching Linen.
   // Calendly accepts colors WITHOUT the `#` prefix.
@@ -45,7 +50,10 @@ export function CalendlyEmbed() {
   const isPlaceholder = CALENDLY_URL.includes('YOUR-CALENDLY-HANDLE')
 
   return (
-    <div className="booking-card reveal calendly-card">
+    <div
+      className="booking-card reveal calendly-card"
+      ref={viewRef as React.RefObject<HTMLDivElement>}
+    >
       <h3>1 — Book your free intro call</h3>
       <p className="bk-sub">
         Grab any open slot — 20 minutes, no slides, no sales pitch. We talk through your app and

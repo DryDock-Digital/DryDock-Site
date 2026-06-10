@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { BOOK_HREF } from '../constants'
 import { animateCount, setGauge, useOnceInView } from '../hooks/useGaugeAndCounter'
+import { track } from '../lib/analytics'
 import { WaterlineWave } from './WaterlineWave'
 
 /**
@@ -99,7 +100,7 @@ export function Hero() {
               <a
                 href={BOOK_HREF}
                 className="btn btn-teal"
-                data-analytics="hero-primary-cta"
+                onClick={() => track('cta_book_clicked', { location: 'hero' })}
               >
                 Book a free intro call
               </a>

@@ -1,4 +1,5 @@
 import { CONTACT_EMAIL } from '../constants'
+import { track } from '../lib/analytics'
 import { Link } from '../lib/router'
 import { Logo } from './Logo'
 
@@ -40,9 +41,30 @@ export function Footer() {
           <div>
             <h4>Contact</h4>
             <ul>
-              <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
-              <li><Link to="/#book">Book your audit</Link></li>
-              <li><Link to="/triage">Emergency triage</Link></li>
+              <li>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  onClick={() => track('external_email_clicked', { location: 'footer' })}
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              </li>
+              <li>
+                <Link
+                  to="/#book"
+                  onClick={() => track('cta_book_clicked', { location: 'footer' })}
+                >
+                  Book your audit
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/triage"
+                  onClick={() => track('triage_opened', { source: 'footer' })}
+                >
+                  Emergency triage
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

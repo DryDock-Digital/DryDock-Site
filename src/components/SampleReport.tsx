@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { BOOK_HREF } from '../constants'
 import { animateCount, setGauge, useOnceInView } from '../hooks/useGaugeAndCounter'
+import { track } from '../lib/analytics'
 
 /**
  * The centerpiece — an interactive sample audit report.
@@ -200,8 +201,12 @@ export function SampleReport() {
     pass: useRef<HTMLDivElement>(null),
   }
 
-  // Animate the initial gauge + counts when the report enters view.
-  const mountRef = useOnceInView(() => applyState('before', true), 0.2)
+  // Animate the initial gauge + counts when the report enters view + emit
+  // an analytics event so we can see how many visitors actually look at it.
+  const mountRef = useOnceInView(() => {
+    applyState('before', true)
+    track('sample_report_viewed')
+  }, 0.2)
 
   function applyState(key: BAState, animate: boolean) {
     const s = states[key]
@@ -410,7 +415,11 @@ export function SampleReport() {
               </svg>
               Full report includes a 20-minute walkthrough call.
             </div>
-            <a href={BOOK_HREF} className="btn btn-teal btn-sm">
+            <a
+              href={BOOK_HREF}
+              className="btn btn-teal btn-sm"
+              onClick={() => track('cta_book_clicked', { location: 'sample_report' })}
+            >
               Get this report for your app
             </a>
           </div>

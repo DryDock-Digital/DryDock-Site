@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { CONTACT_EMAIL, LEAD_FORM_ENDPOINT } from '../constants'
+import { track } from '../lib/analytics'
 import { submitForm } from '../lib/submitForm'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
@@ -33,6 +34,7 @@ export function LeadForm() {
       setVia(result.via)
       setStatus('success')
       form.reset()
+      track('lead_form_submitted', { via: result.via })
     } catch (err) {
       setErrMsg(err instanceof Error ? err.message : 'Unknown error')
       setStatus('error')

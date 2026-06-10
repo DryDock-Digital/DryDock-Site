@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { CONTACT_EMAIL, EMERGENCY_EMAIL, TRIAGE_FORM_ENDPOINT } from '../constants'
+import { track } from '../lib/analytics'
 import { submitForm } from '../lib/submitForm'
 import { Link } from '../lib/router'
 import { Logo } from './Logo'
@@ -48,6 +49,7 @@ export function Triage({ onBack }: Props) {
       })
       setVia(result.via)
       setStatus('success')
+      track('triage_form_submitted', { severity: sev, via: result.via })
       form.reset()
       setSev('breach') // restore the default severity selection
     } catch {

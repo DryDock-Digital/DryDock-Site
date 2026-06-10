@@ -1,3 +1,4 @@
+import { track } from '../lib/analytics'
 import { navigate } from '../lib/router'
 
 export function Emergency() {
@@ -22,7 +23,14 @@ export function Emergency() {
             <span className="light">We offer 48-hour emergency triage.</span>
           </span>
         </div>
-        <button type="button" className="e-cta" onClick={() => navigate('/triage')}>
+        <button
+          type="button"
+          className="e-cta"
+          onClick={() => {
+            track('triage_opened', { source: 'strip' })
+            navigate('/triage')
+          }}
+        >
           Get emergency help
           <svg
             viewBox="0 0 24 24"

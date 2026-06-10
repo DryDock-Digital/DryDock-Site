@@ -1,4 +1,5 @@
 import { BOOK_HREF } from '../constants'
+import { track } from '../lib/analytics'
 
 const Check = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round">
@@ -93,7 +94,11 @@ export function Pricing() {
                 ))}
               </ul>
               {t.cta ? (
-                <a href={t.cta.href} className="btn btn-primary btn-full tier-cta">
+                <a
+                  href={t.cta.href}
+                  className="btn btn-primary btn-full tier-cta"
+                  onClick={() => track('cta_book_clicked', { location: 'pricing_audit' })}
+                >
                   {t.cta.label}
                 </a>
               ) : (
