@@ -440,22 +440,8 @@
   justify-content: center;
   gap: 14px 22px;
 }
-.hero-tagline {
-  margin-top: 40px;
-  font-family: var(--mono);
-  font-size: 12.5px;
-  letter-spacing: 0.04em;
-  color: var(--ink-3);
-  display: flex;
-  align-items: center;
-  gap: 11px;
-}
-.hero-tagline::before {
-  content: "";
-  width: 22px;
-  height: 1px;
-  background: var(--teal-line);
-}
+/* .hero-tagline removed — the "Bring your app in for a refit." line was
+   dropped in favor of the price-led .hero-price block above. */
 .hero-scanner-link {
   margin-top: 22px;
   font-family: var(--mono);
@@ -476,31 +462,55 @@
   border-bottom-color: var(--cyan);
 }
 
-.hero-trust {
-  margin-top: 30px;
+/* ---------- Hero price block ----------
+   Replaces the older small "trust pills" + tagline with a single,
+   $750-led element. Big clay number sits baseline-aligned next to a
+   smaller "audit · 3-business-day report" line; mono meta below
+   covers the invoicing/upfront-charges trust signals. */
+.hero-price {
+  margin-top: 32px;
+  text-align: center;
+  width: 100%;
+}
+.hero-price-headline {
+  margin: 0;
   display: flex;
-  flex-wrap: wrap;
+  align-items: baseline;
   justify-content: center;
-  gap: 12px 26px;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: var(--display);
+  color: var(--ink);
+}
+.hero-price-amount {
+  font-size: clamp(34px, 4.4vw, 44px);
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.hero-price-context {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.hero-price-meta {
+  margin: 12px 0 0;
   font-family: var(--mono);
   font-size: 11.5px;
   letter-spacing: 0.03em;
   color: var(--ink-3);
 }
-.hero-trust span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.hero-trust .dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--teal);
-}
-.hero-trust strong {
-  color: var(--teal);
-  font-weight: 600;
+@media (max-width: 760px) {
+  .hero-price {
+    margin-top: 24px;
+  }
+  .hero-price-amount {
+    font-size: 36px;
+  }
+  .hero-price-context {
+    font-size: 15.5px;
+  }
 }
 
 /* ---------- Hero pillars (Security / Scalability / Launch-ready) ----------
@@ -1293,19 +1303,19 @@
   font-size: 15px;
 }
 
-/* Enterprise contract callout — smaller-than-the-tiers but still visible.
-   Subtle background tint + hairline border + mono so it reads as a quiet
-   "for bigger scopes" sidebar to the main pricing offer. */
+/* Enterprise contract callout — full-width, sits directly under the 3-tier
+   grid as the natural next answer to "if I need more". Matches the grid's
+   container width; subtle background tint + hairline border + mono so it
+   reads as a quiet sidebar to the main pricing offer. */
 .pricing-enterprise {
-  margin: 36px auto 0;
-  padding: 18px 22px;
-  max-width: 64ch;
+  margin-top: 18px;
+  padding: 22px 28px;
   background: var(--bg-2);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
   text-align: center;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.65;
   letter-spacing: 0.01em;
   color: var(--ink-2);

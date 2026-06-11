@@ -108,15 +108,9 @@ export function Pricing() {
           ))}
         </div>
 
-        <p className="pricing-foot reveal">
-          Not sure where to start? Book a free 20-minute intro call. If we agree the audit&rsquo;s
-          a fit, we invoice you for the $750. Nothing&rsquo;s charged through the site. And the
-          full amount comes off your fix if you proceed. Worst case, you get a clear picture of
-          exactly where your app stands.
-        </p>
-
-        {/* Larger-scope clients land here — a smaller-than-the-tiers callout but
-            visible enough to spot. Mailto: opens with a useful subject line. */}
+        {/* Enterprise contracts sit immediately under the 3-tier grid, full
+            container width, so the "if you need more" answer is the next thing
+            visible right after the tiers. */}
         <p className="pricing-enterprise reveal">
           <strong>Need more?</strong> Enterprise contracts (custom scope, dedicated
           engineering) start at $18,000. Email{' '}
@@ -129,6 +123,13 @@ export function Pricing() {
             {CONTACT_EMAIL}
           </a>
           .
+        </p>
+
+        <p className="pricing-foot reveal">
+          Not sure where to start? Book a free 20-minute intro call. If we agree the audit&rsquo;s
+          a fit, we invoice you for the $750. Nothing&rsquo;s charged through the site. And the
+          full amount comes off your fix if you proceed. Worst case, you get a clear picture of
+          exactly where your app stands.
         </p>
       </div>
     </section>

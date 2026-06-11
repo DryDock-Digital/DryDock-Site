@@ -147,12 +147,17 @@ export function Hero() {
                 free 30-sec exposure scan&nbsp;→
               </a>
             </p>
-            <div className="hero-trust reveal">
-              <span><i className="dot" /> Audit <strong>$750</strong></span>
-              <span><i className="dot" /> 3-business-day report</span>
-              <span><i className="dot" /> Invoiced after our free intro call</span>
+            <div className="hero-price reveal">
+              <p className="hero-price-headline">
+                <span className="hero-price-amount">$750</span>
+                <span className="hero-price-context">
+                  audit &middot; 3-business-day report
+                </span>
+              </p>
+              <p className="hero-price-meta">
+                Invoiced after our free intro call &middot; No upfront charges
+              </p>
             </div>
-            <p className="hero-tagline reveal">Bring your app in for a refit.</p>
           </div>
 
           {/* Stage: dark scan panel + light readout */}
