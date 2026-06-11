@@ -33,7 +33,7 @@ const items = [
     title: 'Your database might be wide open.',
     body: (
       <>
-        Most AI-built Supabase apps ship with security rules disabled — meaning any user can read
+        Most AI-built Supabase apps ship with security rules disabled, meaning any user can read
         everyone else&rsquo;s data.{' '}
         <span className="muted">
           A named, recurring failure mode in React/Supabase apps (CVE-2025-48757).
