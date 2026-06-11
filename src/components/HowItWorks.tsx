@@ -2,7 +2,7 @@ const steps = [
   {
     n: '01',
     title: 'Book a free intro call.',
-    body: 'A quick 20-min Calendly slot. No slides, no sales pitch — we just look at your app together.',
+    body: 'A quick 20-min Calendly slot. No slides, no sales pitch. We just look at your app together.',
   },
   {
     n: '02',
@@ -12,7 +12,7 @@ const steps = [
   {
     n: '03',
     title: 'We review your whole app.',
-    body: '3 business days. You get a plain-English report — every issue ranked by risk, with the fix — plus a 20-min walkthrough call.',
+    body: '3 business days. You get a plain-English report (every issue ranked by risk, with the fix) plus a 20-min walkthrough call.',
   },
   {
     n: '04',

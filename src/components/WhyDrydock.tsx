@@ -10,10 +10,10 @@ const Check = () => (
 const reasons = [
   {
     title: 'We only do React + Supabase.',
-    body: 'It’s the most common AI-built stack — and because it’s all we do, we’ve seen every way it breaks. We’re faster, and we catch what generalists miss.',
+    body: 'It’s the most common AI-built stack, and because it’s all we do, we’ve seen every way it breaks. We’re faster, and we catch what generalists miss.',
   },
   {
-    title: 'A real senior engineer — not a queue.',
+    title: 'A real senior engineer. Not a queue.',
     body: 'You work directly with an experienced engineer, not a junior behind a project manager or an anonymous offshore team.',
   },
   {

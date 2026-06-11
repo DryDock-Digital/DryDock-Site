@@ -36,7 +36,7 @@ const services: Service[] = [
     num: '01',
     Icon: Search,
     title: 'Audit',
-    body: 'A senior engineer reviews your whole app against the 30+ ways AI-built apps break. You get a clear, plain-English report — what’s wrong, how dangerous it is, and exactly how to fix it.',
+    body: 'A senior engineer reviews your whole app against the 30+ ways AI-built apps break. You get a clear, plain-English report: what’s wrong, how dangerous it is, and exactly how to fix it.',
     price: '$750',
     meta: '3 business days',
   },
@@ -63,11 +63,11 @@ export function WhatWeDo() {
     <section className="section bg-white border-y" id="what-we-do">
       <div className="container">
         <p className="eyebrow reveal">What we do</p>
-        <h2 className="h-sec reveal">We fix the whole app — not just the database.</h2>
+        <h2 className="h-sec reveal">We fix the whole app, not just the database.</h2>
         <p className="lead reveal">
           We don&rsquo;t hand you a PDF of problems and wish you luck. We&rsquo;re React + Supabase
-          specialists, and we fix the entire application — front end, back end, security, payments,
-          and scale — and hand you back something you can ship with confidence.
+          specialists, and we fix the entire application (front end, back end, security, payments,
+          and scale) and hand you back something you can ship with confidence.
         </p>
 
         <div className="service-grid">

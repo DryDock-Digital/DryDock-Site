@@ -70,7 +70,7 @@ export function Pricing() {
         <p className="eyebrow reveal">Pricing</p>
         <h2 className="h-sec reveal">Simple, fixed pricing.</h2>
         <p className="lead reveal">
-          No mystery hourly meter. Start with the audit — it&rsquo;s the only decision you need to
+          No mystery hourly meter. Start with the audit. It&rsquo;s the only decision you need to
           make today.
         </p>
 
@@ -110,7 +110,7 @@ export function Pricing() {
 
         <p className="pricing-foot reveal">
           Not sure where to start? Book a free 20-minute intro call. If we agree the audit&rsquo;s
-          a fit, we invoice you for the $750 — nothing&rsquo;s charged through the site. And the
+          a fit, we invoice you for the $750. Nothing&rsquo;s charged through the site. And the
           full amount comes off your fix if you proceed. Worst case, you get a clear picture of
           exactly where your app stands.
         </p>
@@ -118,8 +118,8 @@ export function Pricing() {
         {/* Larger-scope clients land here — a smaller-than-the-tiers callout but
             visible enough to spot. Mailto: opens with a useful subject line. */}
         <p className="pricing-enterprise reveal">
-          <strong>Need more?</strong> Enterprise contracts &mdash; custom scope, dedicated
-          engineering &mdash; start at $18,000. Email{' '}
+          <strong>Need more?</strong> Enterprise contracts (custom scope, dedicated
+          engineering) start at $18,000. Email{' '}
           <a
             href={`mailto:${CONTACT_EMAIL}?subject=Enterprise%20contract%20inquiry`}
             onClick={() =>

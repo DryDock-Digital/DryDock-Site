@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div>
-            <Link to="/" className="logo" aria-label="Drydock — home">
+            <Link to="/" className="logo" aria-label="Drydock, home">
               <Logo variant="footer" size={32} />
               <span className="logo-word">Drydock</span>
             </Link>

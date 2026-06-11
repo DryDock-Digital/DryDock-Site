@@ -94,29 +94,29 @@ export function Hero() {
               <span className="accent">We make it real.</span>
             </h1>
             <p className="hero-sub reveal">
-              Lovable, Bolt, v0, and Cursor get you 80% there. A senior engineering team —
-              humans with years of production experience — takes your React + Supabase app the
+              Lovable, Bolt, v0, and Cursor get you 80% there. A senior engineering team,
+              humans with years of production experience, takes your React + Supabase app the
               last 20%.
             </p>
             <ul className="hero-pillars reveal" aria-label="What we cover">
               <li className="hero-pillar">
                 <h3>Security</h3>
                 <p>
-                  RLS, exposed keys, auth gaps, payment webhooks &mdash; the data-layer issues
+                  RLS, exposed keys, auth gaps, payment webhooks: the data-layer issues
                   AI tools quietly miss.
                 </p>
               </li>
               <li className="hero-pillar">
                 <h3>Scalability</h3>
                 <p>
-                  Query patterns, indexes, error handling &mdash; so the app gets faster as you
+                  Query patterns, indexes, error handling. So the app gets faster as you
                   grow, not slower.
                 </p>
               </li>
               <li className="hero-pillar">
                 <h3>Launch-ready</h3>
                 <p>
-                  Monitoring, error boundaries, graceful failure &mdash; the polish between
+                  Monitoring, error boundaries, graceful failure: the polish between
                   &ldquo;demos great&rdquo; and &ldquo;survives real users.&rdquo;
                 </p>
               </li>
@@ -137,7 +137,7 @@ export function Hero() {
               </a>
             </div>
             <p className="hero-scanner-link reveal">
-              Or check yours yourself —{' '}
+              Or check yours yourself:{' '}
               <a
                 href={SCANNER_URL}
                 target="_blank"
@@ -238,7 +238,7 @@ export function Hero() {
               <div className="readout-text">
                 <div className="label">Seaworthiness</div>
                 <div className="val">
-                  <span className="bad">Not ready to ship</span> — 6 issues found
+                  <span className="bad">Not ready to ship</span> · 6 issues found
                 </div>
               </div>
               <a href="#report" className="readout-cta linkarrow">

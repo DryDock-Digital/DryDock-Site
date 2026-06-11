@@ -18,9 +18,9 @@ import { WhyDrydock } from './components/WhyDrydock'
 import { usePageInteractions } from './hooks/usePageInteractions'
 import { navigate, useRoute } from './lib/router'
 
-const LANDING_TITLE = 'Drydock — You built it with AI. We make it real.'
+const LANDING_TITLE = 'Drydock | You built it with AI. We make it real.'
 const LANDING_DESC =
-  'Senior React + Supabase engineers who audit and fix AI-built apps. A $750 production-readiness audit in 3 days — secured, hardened, and ready for real users.'
+  'Senior React + Supabase engineers who audit and fix AI-built apps. A $750 production-readiness audit in 3 days. Secured, hardened, and ready for real users.'
 
 export default function App() {
   // Wire up scroll-progress, scroll reveal, html.anim toggle (re-runs per route

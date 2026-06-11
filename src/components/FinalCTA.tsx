@@ -17,8 +17,8 @@ export function FinalCTA() {
             <span className="accent">Your whole app reviewed.</span>
           </h2>
           <p className="lead reveal">
-            Start with a free 20-minute intro call. If the audit&rsquo;s a fit, we invoice $750 —
-            no upfront charges through the site — and the full amount comes off your fix.
+            Start with a free 20-minute intro call. If the audit&rsquo;s a fit, we invoice $750
+            (no upfront charges through the site) and the full amount comes off your fix.
           </p>
           <div className="final-cta-row reveal">
             <a

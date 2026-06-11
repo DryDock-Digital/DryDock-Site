@@ -12,7 +12,7 @@ export function SocialProof() {
               Until we have case studies, the sample report is the proof.
             </div>
             <p>
-              It&rsquo;s a real, anonymized report from a React + Supabase app — every issue,
+              It&rsquo;s a real, anonymized report from a React + Supabase app: every issue,
               ranked by risk, with the exact fix. If you want to see the work before you book,
               start there.
             </p>

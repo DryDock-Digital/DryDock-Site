@@ -22,7 +22,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="container">
-        <Link to="/" className="logo" aria-label="Drydock — home">
+        <Link to="/" className="logo" aria-label="Drydock, home">
           <Logo />
           <span className="logo-word">Drydock</span>
         </Link>

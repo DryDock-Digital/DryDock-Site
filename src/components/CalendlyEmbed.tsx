@@ -54,9 +54,9 @@ export function CalendlyEmbed() {
       className="booking-card reveal calendly-card"
       ref={viewRef as React.RefObject<HTMLDivElement>}
     >
-      <h3>1 — Book your free intro call</h3>
+      <h3>1. Book your free intro call</h3>
       <p className="bk-sub">
-        Grab any open slot — 20 minutes, no slides, no sales pitch. We talk through your app and
+        Grab any open slot. 20 minutes, no slides, no sales pitch. We talk through your app and
         figure out whether the audit&rsquo;s a fit. Zero commitment, nothing charged.
       </p>
 

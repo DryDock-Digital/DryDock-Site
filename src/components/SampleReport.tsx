@@ -31,7 +31,7 @@ const findings: Finding[] = [
     what: (
       <>
         Your tables ship with row-level security turned off, so the database never checks{' '}
-        <em>who</em> is asking. Any logged-in user — or anyone who finds your public API key — can
+        <em>who</em> is asking. Any logged-in user (or anyone who finds your public API key) can
         read and edit every other user&rsquo;s data. This is the exact flaw behind the Tea app
         breach and CVE-2025-48757.
       </>
@@ -55,7 +55,7 @@ const findings: Finding[] = [
     loc: 'src/lib/supabaseClient.ts',
     what: (
       <>
-        The admin (service-role) key bypasses all security rules — and it&rsquo;s bundled into the
+        The admin (service-role) key bypasses all security rules, and it&rsquo;s bundled into the
         JavaScript every visitor downloads. Anyone can open dev tools, copy it, and get full
         read/write access to your entire database.
       </>
@@ -78,7 +78,7 @@ const findings: Finding[] = [
     what: (
       <>
         Comments are injected with <code>dangerouslySetInnerHTML</code>. A user can post a comment
-        containing a script that then runs in every other visitor&rsquo;s browser — stealing
+        containing a script that then runs in every other visitor&rsquo;s browser, stealing
         sessions or redirecting them. AI code fails to defend against XSS 86% of the time.
       </>
     ),
@@ -94,7 +94,7 @@ const findings: Finding[] = [
   },
   {
     sev: 'high',
-    title: 'No rate limiting on auth — open to credential stuffing',
+    title: 'No rate limiting on auth, open to credential stuffing',
     loc: 'supabase/auth · /api/login',
     what: 'Your login endpoint accepts unlimited attempts. Attackers can run millions of password guesses, and every attempt costs you money in function invocations.',
     risk: 'Account takeover via brute force, plus a runaway cloud bill.',
@@ -113,7 +113,7 @@ const findings: Finding[] = [
     title: 'N+1 queries and missing indexes slow the dashboard',
     loc: 'src/routes/Dashboard.tsx',
     what: 'The dashboard fires one query per row instead of one query for all rows, and foreign keys aren’t indexed. It feels fine with 20 rows in the demo and crawls at 2,000.',
-    risk: 'The app gets slower as you get more successful — exactly backwards.',
+    risk: 'The app gets slower as you get more successful. Exactly backwards.',
     fix: (
       <>
         <span className="add">+ create index on messages (conversation_id);</span>
@@ -124,9 +124,9 @@ const findings: Finding[] = [
   },
   {
     sev: 'med',
-    title: 'No error boundaries — one failed fetch blanks the screen',
+    title: 'No error boundaries, one failed fetch blanks the screen',
     loc: 'src/App.tsx',
-    what: 'A single failed network request throws and unmounts the whole React tree — users see a white screen with no explanation and no way to recover.',
+    what: 'A single failed network request throws and unmounts the whole React tree. Users see a white screen with no explanation and no way to recover.',
     risk: 'Looks "down" to users on any transient error; high support burden.',
     fix: (
       <>
@@ -145,7 +145,7 @@ const findings: Finding[] = [
     what: (
       <>
         TLS is enforced, cookies are <code>httpOnly</code> + <code>secure</code>, and your lockfile
-        has no known-vulnerable dependencies. Credit where it&rsquo;s due — the tooling got these
+        has no known-vulnerable dependencies. Credit where it&rsquo;s due: the tooling got these
         right. We tell you what&rsquo;s solid, not just what&rsquo;s broken.
       </>
     ),
@@ -261,7 +261,7 @@ export function SampleReport() {
             <h2 className="h-sec reveal">This is exactly what you get back.</h2>
             <p className="lead reveal">
               A real, anonymized report from a React + Supabase app. Every issue, ranked by risk,
-              in plain English — with the exact fix. Click any finding to see how dangerous it is
+              in plain English, with the exact fix. Click any finding to see how dangerous it is
               and how we&rsquo;d repair it.
             </p>
           </div>

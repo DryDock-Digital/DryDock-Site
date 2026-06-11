@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { Link } from '../../lib/router'
 import { posts } from '../../blog/posts'
 
-const SITE_TITLE = 'Blog — Drydock'
+const SITE_TITLE = 'Blog | Drydock'
 const SITE_DESC =
-  'Practical guides on making React + Supabase apps production-ready — RLS, auth, payments, scale.'
+  'Practical guides on making React + Supabase apps production-ready: RLS, auth, payments, scale.'
 
 export function BlogIndex() {
   // Update <title> and meta description per route.
@@ -22,7 +22,7 @@ export function BlogIndex() {
             Field notes from the dry dock.
           </h1>
           <p className="lead reveal">
-            How AI-built React + Supabase apps break in production, and how to fix them — written
+            How AI-built React + Supabase apps break in production, and how to fix them. Written
             for founders.
           </p>
 

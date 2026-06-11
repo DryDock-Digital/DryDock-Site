@@ -54,7 +54,7 @@ const items = [
   {
     Icon: EyeOff,
     title: 'You can’t see what’s wrong.',
-    body: 'That’s the scary part — the problems are invisible until a user, a hacker, or an investor finds them first.',
+    body: 'That’s the scary part: the problems are invisible until a user, a hacker, or an investor finds them first.',
   },
 ]
 
@@ -86,11 +86,11 @@ export function Problem() {
           </div>
           <div className="stat-text">
             <div className="big">
-              of AI-generated code contains a known security vulnerability — at{' '}
+              of AI-generated code contains a known security vulnerability, at{' '}
               <strong>2.7&times;</strong> the density of human-written code.
             </div>
             <div className="src">
-              Source · Veracode 2025 (100+ LLMs, 80 tasks). It&rsquo;s not your fault — it&rsquo;s
+              Source · Veracode 2025 (100+ LLMs, 80 tasks). It&rsquo;s not your fault. It&rsquo;s
               how the tools work.
             </div>
           </div>

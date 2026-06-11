@@ -3,23 +3,23 @@ import { useState } from 'react'
 const faqs = [
   {
     q: 'Will you judge my code / my AI-built app?',
-    a: 'Never. Honestly, we love AI-built apps — they’re why we exist, and you got further than most people expect. Our job is to make it real, not to critique how you got here.',
+    a: 'Never. Honestly, we love AI-built apps. They’re why we exist, and you got further than most people expect. Our job is to make it real, not to critique how you got here.',
   },
   {
     q: 'I’m not technical. Will I understand the report?',
-    a: 'Yes — that’s the whole point. We write for founders, not engineers. Plain English, ranked by what actually matters, with clear next steps.',
+    a: 'Yes, that’s the whole point. We write for founders, not engineers. Plain English, ranked by what actually matters, with clear next steps.',
   },
   {
     q: 'What if my app needs a full rebuild?',
-    a: 'We’ll tell you honestly. Sometimes the fastest path is rebuilding the foundation, and if so we’ll say so and quote it — but most AI-built apps don’t need that. The audit tells you for sure.',
+    a: 'We’ll tell you honestly. Sometimes the fastest path is rebuilding the foundation, and if so we’ll say so and quote it, but most AI-built apps don’t need that. The audit tells you for sure.',
   },
   {
     q: 'Do you only work with Lovable apps?',
     a: 'We specialize in React + Supabase apps, which covers most apps built with Lovable, Bolt, v0, and Cursor. Not sure what you’ve got? Book an audit and we’ll figure it out together.',
   },
   {
-    q: 'I’m using Lovable Cloud — does that change anything?',
-    a: 'Nope, you’re in the right place. Lovable Cloud is Supabase with the setup smoothed out — same Postgres database, same anon key in the browser, same RLS deciding who can see what. The things that quietly break in a regular Lovable + Supabase app break the same way under Cloud. Every check we run and every fix we make applies identically.',
+    q: 'I’m using Lovable Cloud. Does that change anything?',
+    a: 'Nope, you’re in the right place. Lovable Cloud is Supabase with the setup smoothed out: same Postgres database, same anon key in the browser, same RLS deciding who can see what. The things that quietly break in a regular Lovable + Supabase app break the same way under Cloud. Every check we run and every fix we make applies identically.',
   },
   {
     q: 'What do you need from me to start?',
@@ -27,11 +27,11 @@ const faqs = [
   },
   {
     q: 'When do I pay? Is there anything charged through the site?',
-    a: 'Nothing automatic — the site doesn’t charge you for anything. After our free intro call, if we agree the audit makes sense, we send a single $750 invoice. You pay it, we get to work. No surprise charges, no subscriptions.',
+    a: 'Nothing automatic. The site doesn’t charge you for anything. After our free intro call, if we agree the audit makes sense, we send a single $750 invoice. You pay it, we get to work. No surprise charges, no subscriptions.',
   },
   {
     q: 'Is the $750 really credited?',
-    a: 'Yes — in full, toward any fix booked within 14 days of your audit.',
+    a: 'Yes, in full, toward any fix booked within 14 days of your audit.',
   },
 ]
 

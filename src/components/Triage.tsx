@@ -44,7 +44,7 @@ export function Triage({ onBack }: Props) {
     try {
       const result = await submitForm(data, {
         endpoint: TRIAGE_FORM_ENDPOINT,
-        subject: `URGENT — Drydock triage (${sevLabel})`,
+        subject: `URGENT: Drydock triage (${sevLabel})`,
         to: EMERGENCY_EMAIL,
       })
       setVia(result.via)
@@ -100,7 +100,7 @@ export function Triage({ onBack }: Props) {
           </h1>
           <p className="triage-sub">
             A senior React + Supabase engineer gets on it fast. We contain the incident, find out
-            what happened, and get you to a safe, stable state — then help you tell users the
+            what happened, and get you to a safe, stable state. Then help you tell users the
             truth, calmly. No judgment. Just a steady hand.
           </p>
 
@@ -115,7 +115,7 @@ export function Triage({ onBack }: Props) {
                     <h3>Contain</h3>
                     <div className="when">0–15 min · stop the leak</div>
                     <p>
-                      We lock down the exposed data path first — rotate keys, flip on row-level
+                      We lock down the exposed data path first: rotate keys, flip on row-level
                       security, pull the leaking endpoint. Bleeding stops before anything else.
                     </p>
                   </div>
@@ -127,7 +127,7 @@ export function Triage({ onBack }: Props) {
                     <div className="when">15–45 min · what happened</div>
                     <p>
                       We trace the blast radius: what was exposed, for how long, and to whom. You
-                      get a clear, plain-English picture — not a panic.
+                      get a clear, plain-English picture, not a panic.
                     </p>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ export function Triage({ onBack }: Props) {
             <div className="triage-form">
               <h2>Start emergency triage</h2>
               <p className="tf-sub">
-                Tell us what&rsquo;s happening. We reply within hours, not days — usually much
+                Tell us what&rsquo;s happening. We reply within hours, not days. Usually much
                 faster.
               </p>
 
@@ -243,8 +243,8 @@ export function Triage({ onBack }: Props) {
                 </div>
                 <div className={`triage-ok ${status === 'success' ? 'show' : ''}`}>
                   {via === 'mailto'
-                    ? `Your email client should now be open with the request drafted (going to ${EMERGENCY_EMAIL}). Hit send — we'll reply fast.`
-                    : `Got it — your request is in. We'll reply fast at ${CONTACT_EMAIL}.`}
+                    ? `Your email client should now be open with the request drafted (going to ${EMERGENCY_EMAIL}). Hit send, we'll reply fast.`
+                    : `Got it. Your request is in. We'll reply fast at ${CONTACT_EMAIL}.`}
                 </div>
                 {status === 'error' && (
                   <div

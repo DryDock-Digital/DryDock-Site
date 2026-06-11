@@ -29,7 +29,7 @@ export function LeadForm() {
     try {
       const result = await submitForm(data, {
         endpoint: LEAD_FORM_ENDPOINT,
-        subject: `Drydock lead — ${name}`,
+        subject: `Drydock lead: ${name}`,
       })
       setVia(result.via)
       setStatus('success')
@@ -43,7 +43,7 @@ export function LeadForm() {
 
   return (
     <div className="booking-card reveal">
-      <h3>2 — Or tell us about your app first</h3>
+      <h3>2. Or tell us about your app first</h3>
       <p className="bk-sub">
         Prefer email? We&rsquo;ll reply within one business day at {CONTACT_EMAIL} and set up a
         call from there.
@@ -92,8 +92,8 @@ export function LeadForm() {
         </button>
         <div className={`form-ok ${status === 'success' ? 'show' : ''}`}>
           {via === 'mailto'
-            ? `Your email client should now be open with the message drafted. Hit send — it goes to ${CONTACT_EMAIL}, and we'll reply within one business day.`
-            : `Thanks — we'll be in touch within one business day at ${CONTACT_EMAIL}.`}
+            ? `Your email client should now be open with the message drafted. Hit send, it goes to ${CONTACT_EMAIL}, and we'll reply within one business day.`
+            : `Thanks, we'll be in touch within one business day at ${CONTACT_EMAIL}.`}
         </div>
         {status === 'error' && (
           <div
