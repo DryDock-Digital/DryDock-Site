@@ -85,17 +85,42 @@ export function Hero() {
         <div className="hero-inner">
           {/* Copy */}
           <div className="hero-copy">
-            <p className="eyebrow teal reveal">React + Supabase production specialists</p>
+            <p className="eyebrow teal reveal">
+              Senior engineers · React + Supabase production specialists
+            </p>
             <h1 className="hero-h1 reveal">
               You built it with AI.
               <br />
               <span className="accent">We make it real.</span>
             </h1>
             <p className="hero-sub reveal">
-              Lovable, Bolt, v0, and Cursor get you 80% there — then the security holes, the
-              database mistakes, and the &ldquo;works in the demo, breaks in the wild&rdquo;
-              problems start. We&rsquo;re the senior engineers who take your app the last mile.
+              Lovable, Bolt, v0, and Cursor get you 80% there. A senior engineering team —
+              humans with years of production experience — takes your React + Supabase app the
+              last 20%.
             </p>
+            <ul className="hero-pillars reveal" aria-label="What we cover">
+              <li className="hero-pillar">
+                <h3>Security</h3>
+                <p>
+                  RLS, exposed keys, auth gaps, payment webhooks &mdash; the data-layer issues
+                  AI tools quietly miss.
+                </p>
+              </li>
+              <li className="hero-pillar">
+                <h3>Scalability</h3>
+                <p>
+                  Query patterns, indexes, error handling &mdash; so the app gets faster as you
+                  grow, not slower.
+                </p>
+              </li>
+              <li className="hero-pillar">
+                <h3>Launch-ready</h3>
+                <p>
+                  Monitoring, error boundaries, graceful failure &mdash; the polish between
+                  &ldquo;demos great&rdquo; and &ldquo;survives real users.&rdquo;
+                </p>
+              </li>
+            </ul>
             <div className="hero-cta reveal">
               <a
                 href={BOOK_HREF}
@@ -123,9 +148,9 @@ export function Hero() {
               </a>
             </p>
             <div className="hero-trust reveal">
-              <span><i className="dot" /> 20-min call, no commitment</span>
-              <span><i className="dot" /> Fixed-price $750 audit if it&rsquo;s a fit</span>
-              <span><i className="dot" /> Report in 3 business days</span>
+              <span><i className="dot" /> Audit <strong>$750</strong></span>
+              <span><i className="dot" /> 3-business-day report</span>
+              <span><i className="dot" /> Invoiced after our free intro call</span>
             </div>
             <p className="hero-tagline reveal">Bring your app in for a refit.</p>
           </div>

@@ -498,6 +498,56 @@
   border-radius: 50%;
   background: var(--teal);
 }
+.hero-trust strong {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+/* ---------- Hero pillars (Security / Scalability / Launch-ready) ----------
+   Three short capability blurbs that sit between the subhead and the CTA,
+   telling the visitor exactly what we cover. Hairline-clay top border per
+   pillar; mono uppercase title; calm slate body. Stacks on mobile. */
+.hero-pillars {
+  margin-top: 38px;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 760px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  text-align: left;
+}
+.hero-pillar {
+  padding-top: 16px;
+  border-top: 1px solid var(--teal-line);
+}
+.hero-pillar h3 {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0;
+}
+.hero-pillar p {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+@media (max-width: 760px) {
+  .hero-pillars {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .hero-pillar {
+    padding-top: 12px;
+  }
+}
 
 /* the audit surface — dark inset */
 .hero-stage {
@@ -1241,6 +1291,39 @@
   color: var(--ink-2);
   line-height: 1.6;
   font-size: 15px;
+}
+
+/* Enterprise contract callout — smaller-than-the-tiers but still visible.
+   Subtle background tint + hairline border + mono so it reads as a quiet
+   "for bigger scopes" sidebar to the main pricing offer. */
+.pricing-enterprise {
+  margin: 36px auto 0;
+  padding: 18px 22px;
+  max-width: 64ch;
+  background: var(--bg-2);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--ink-2);
+}
+.pricing-enterprise strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.pricing-enterprise a {
+  color: var(--teal);
+  font-weight: 500;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--teal-line);
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.pricing-enterprise a:hover {
+  color: var(--cyan);
+  border-bottom-color: var(--cyan);
 }
 
 /* ============================================================

@@ -1,4 +1,4 @@
-import { BOOK_HREF } from '../constants'
+import { BOOK_HREF, CONTACT_EMAIL } from '../constants'
 import { track } from '../lib/analytics'
 
 const Check = () => (
@@ -48,16 +48,16 @@ const tiers: Tier[] = [
     note: 'Starts from your audit',
   },
   {
-    name: 'Retainer',
-    tagline: 'Keep it solid',
-    price: 'from $1,500',
+    name: 'Monitoring',
+    tagline: 'Eyes on it as you grow',
+    price: '$500',
     unit: '/mo',
-    time: 'Monthly',
+    time: '6-month minimum commitment',
     features: [
-      'Senior engineer on call as you grow',
+      'Senior engineer watching your stack',
       'Code reviews on new features',
       'Security & data-model guardrails',
-      'Cancel anytime',
+      'Fixes scoped & priced per SOW',
     ],
     note: 'Added after your fix',
   },
@@ -113,6 +113,22 @@ export function Pricing() {
           a fit, we invoice you for the $750 — nothing&rsquo;s charged through the site. And the
           full amount comes off your fix if you proceed. Worst case, you get a clear picture of
           exactly where your app stands.
+        </p>
+
+        {/* Larger-scope clients land here — a smaller-than-the-tiers callout but
+            visible enough to spot. Mailto: opens with a useful subject line. */}
+        <p className="pricing-enterprise reveal">
+          <strong>Need more?</strong> Enterprise contracts &mdash; custom scope, dedicated
+          engineering &mdash; start at $18,000. Email{' '}
+          <a
+            href={`mailto:${CONTACT_EMAIL}?subject=Enterprise%20contract%20inquiry`}
+            onClick={() =>
+              track('external_email_clicked', { location: 'enterprise_pricing' })
+            }
+          >
+            {CONTACT_EMAIL}
+          </a>
+          .
         </p>
       </div>
     </section>
