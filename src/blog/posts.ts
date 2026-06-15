@@ -1,5 +1,17 @@
 import type { ComponentType } from 'react'
 import {
+  LaunchChecklistCTA,
+  LaunchChecklistPost,
+} from './LaunchChecklistPost'
+import {
+  PreviewVsProductionCTA,
+  PreviewVsProductionPost,
+} from './PreviewVsProductionPost'
+import {
+  SecureStripePaymentsCTA,
+  SecureStripePaymentsPost,
+} from './SecureStripePaymentsPost'
+import {
   SupabaseAPIKeyExposedCTA,
   SupabaseAPIKeyExposedPost,
 } from './SupabaseAPIKeyExposedPost'
@@ -39,6 +51,44 @@ export type BlogPostMeta = {
 }
 
 export const posts: BlogPostMeta[] = [
+  {
+    slug: 'react-supabase-launch-checklist',
+    title:
+      'The React + Supabase Launch Checklist: What to Check Before Real Users',
+    seoTitle: 'The React + Supabase Launch Checklist (Before Real Users)',
+    description:
+      'A complete pre-launch checklist for AI-built React + Supabase apps. The security, data, payments, and reliability items to fix before real users (and investors) show up.',
+    date: '2026-06-15',
+    readMinutes: 7,
+    category: 'Launch',
+    Body: LaunchChecklistPost,
+    CTA: LaunchChecklistCTA,
+  },
+  {
+    slug: 'secure-stripe-payments-supabase',
+    title:
+      'Can Someone Fake a Payment in Your App? Securing Stripe in a Supabase App',
+    seoTitle: 'Stop Fake Payments: Securing Stripe in a Supabase App',
+    description:
+      'In many AI-built apps, anyone can fake a "payment succeeded" and unlock paid features for free. Here\'s how to verify Stripe webhooks in a Supabase app and lock payments down.',
+    date: '2026-06-15',
+    readMinutes: 5,
+    category: 'Security',
+    Body: SecureStripePaymentsPost,
+    CTA: SecureStripePaymentsCTA,
+  },
+  {
+    slug: 'lovable-app-works-in-preview-not-production',
+    title: 'Your Lovable App Works in Preview but Breaks in Production. Here Is Why',
+    seoTitle: 'Lovable App Works in Preview but Breaks in Production? Fixes',
+    description:
+      'Your AI-built app works perfectly in preview, then breaks once deployed. Here are the real reasons (env vars, auth URLs, build differences) and how to fix each one.',
+    date: '2026-06-15',
+    readMinutes: 6,
+    category: 'Production',
+    Body: PreviewVsProductionPost,
+    CTA: PreviewVsProductionCTA,
+  },
   {
     slug: 'vibe-coding-security-audit-7-findings',
     title:
