@@ -31,3 +31,10 @@ out/
 
 # Local design reference (not for commit)
 .design-reference*
+
+# Stray Python tooling that lives in this dir locally but doesn't belong
+# in the marketing-site repo (the scanner has its own home in
+# DryDock-Digital/DryDock-Scanner).
+__pycache__/
+*.pyc
+drydock_scan.py
