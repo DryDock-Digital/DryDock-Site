@@ -6,8 +6,11 @@ import { useServicePath, type ServicePath } from '../lib/servicePath'
  * right half of the hero split. The left half is whichever hero the
  * selected path owns, so the rail is the control that swaps the page.
  *
- * Rendered INSIDE each hero (Hero, BuildHero) rather than around them,
- * because each path owns its own hero layout.
+ * Before a choice is made (path === null) NEITHER card is selected and the
+ * general hero sits alongside — the rail is the page's opening question.
+ *
+ * Rendered INSIDE each hero (GeneralHero, Hero, BuildHero) rather than
+ * around them, because each hero owns its own layout.
  */
 type CardDef = {
   id: ServicePath
@@ -49,11 +52,16 @@ export function PathTabs() {
     }
   }
 
-  // Vertical tablist: Up/Down are primary, Left/Right also accepted.
-  function onKeyDown(e: KeyboardEvent<HTMLButtonElement>) {
-    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return
+  // Vertical tablist: Up/Down are primary, Left/Right also accepted. Moves
+  // relative to the focused card, so it behaves the same whether or not a
+  // path has been chosen yet.
+  function onKeyDown(e: KeyboardEvent<HTMLButtonElement>, idx: number) {
+    const forward = e.key === 'ArrowDown' || e.key === 'ArrowRight'
+    const back = e.key === 'ArrowUp' || e.key === 'ArrowLeft'
+    if (!forward && !back) return
     e.preventDefault()
-    const next: ServicePath = path === 'refit' ? 'build' : 'refit'
+    const nextIdx = (idx + (forward ? 1 : -1) + CARDS.length) % CARDS.length
+    const next = CARDS[nextIdx].id
     onSelect(next)
     cardRefs.current[next]?.focus()
   }
@@ -62,7 +70,7 @@ export function PathTabs() {
     <div className="path-rail" id="paths">
       <p className="path-rail-label reveal">Two ways into the dock</p>
       <div role="tablist" aria-orientation="vertical" aria-label="Service paths">
-        {CARDS.map((c) => {
+        {CARDS.map((c, i) => {
           const selected = path === c.id
           return (
             <button
@@ -74,11 +82,14 @@ export function PathTabs() {
               role="tab"
               id={`tab-${c.id}`}
               aria-selected={selected}
-              aria-controls={`panel-${c.id}`}
-              tabIndex={selected ? 0 : -1}
+              // No panel exists until a path is chosen, so don't point at one.
+              aria-controls={selected ? `panel-${c.id}` : undefined}
+              // Roving tabindex — with nothing chosen yet, the first card is
+              // the tab stop.
+              tabIndex={selected || (path === null && i === 0) ? 0 : -1}
               className="path-card reveal"
               onClick={() => onSelect(c.id)}
-              onKeyDown={onKeyDown}
+              onKeyDown={(e) => onKeyDown(e, i)}
             >
               <span className="kicker">{c.kicker}</span>
               <span className="title">{c.title}</span>

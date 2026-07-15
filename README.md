@@ -5,11 +5,16 @@ service. One conversion goal: get a founder onto the free intro/discovery call (
 
 ## The two paths
 
-Drydock is the parent brand with two service paths. Each hero is vertically split: the
-left half is the selected path's own hero copy, and the right half is a rail of two
-stacked, toggleable option cards (`src/components/PathTabs.tsx`; state in
-`src/lib/servicePath.tsx`) that swaps between them. The rail renders inside each hero:
+Drydock is the parent brand with two service paths. Every hero is vertically split: the
+left half is hero copy, and the right half is a rail of two stacked, toggleable option
+cards (`src/components/PathTabs.tsx`; state in `src/lib/servicePath.tsx`). The rail
+renders inside each hero.
 
+The landing page has **three states**, driven by `servicePath` (`null | 'refit' | 'build'`):
+
+- **No path chosen yet** (`null`, the first-visit default) — `GeneralHero` stands alone
+  ("Secure, user-ready custom software"), with neither card selected and no path sections
+  mounted. The header nav is just the blog, and `FinalCTA` shows its `general` copy.
 - **Refit** (Path 01) — the original scope: audit, security, and the last 20% of an
   existing AI-built app. `Hero` (the scan-panel hero), then `Problem`, `Emergency`,
   `WhatWeDo`, `SampleReport`, `WhyDrydock`, `SocialProof`, `Pricing`, `HowItWorks`, `FAQ`.
@@ -18,10 +23,14 @@ stacked, toggleable option cards (`src/components/PathTabs.tsx`; state in
   `BuildScope`, `BuildProcess`, `BuildPricing`, `BuildFAQ`. (The dir is named
   `shipyard/`, not `build/`, because the root `.gitignore` ignores any `build/` dir.)
 
-The header, booking section (`FinalCTA` adapts its copy per path), and footer are shared.
-The selected path persists per browser session and the header nav anchors follow it.
-Shared section ids (`#pricing`, `#how`, `#faq`, `#book`) exist on both panels; ids unique
-to one panel (`#report`, `#build-scope`, …) pick the right tab on deep links.
+A path is pre-selected (skipping the general hero) when the visitor deep-links into a
+path-specific section (`#report`, `#build-scope`, …) or already chose one this session,
+so existing shared links still land where they always did.
+
+The header, booking section (`FinalCTA` adapts its copy per state), and footer are shared
+by all three states. The header nav anchors follow the selected path. Shared section ids
+(`#pricing`, `#how`, `#faq`, `#book`) exist on both panels; ids unique to one panel
+(`#report`, `#build-scope`, …) pick that path on deep links.
 
 Stack: **Vite + React + TypeScript + Tailwind CSS**. Deploys to **Vercel** as a static site.
 

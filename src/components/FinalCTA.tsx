@@ -6,8 +6,17 @@ import { LeadForm } from './LeadForm'
 import { WaterlineWave } from './WaterlineWave'
 
 // Head copy per service path — the booking section itself (Calendly + lead
-// form) is shared, since both paths start with the same free 20-min call.
+// form) is shared, since every path starts with the same free 20-min call.
+// `general` covers the state before the visitor has picked a path.
 const COPY = {
+  general: {
+    eyebrow: 'Start with a free 20-minute call',
+    line1: 'A senior crew.',
+    line2: 'Software that ships.',
+    lead: 'Whether you have an app that needs finishing or an idea that needs building, start with a free 20-minute call. Nothing is charged through the site.',
+    micro: 'No judgment. No hourly meter. No surprise charges. Just answers.',
+    cta: 'Book a free intro call',
+  },
   refit: {
     eyebrow: 'Find out exactly where your app stands',
     line1: 'A senior engineer.',
@@ -28,7 +37,7 @@ const COPY = {
 
 export function FinalCTA() {
   const { path } = useServicePath()
-  const copy = COPY[path]
+  const copy = COPY[path ?? 'general']
 
   return (
     <section className="section final" id="book">

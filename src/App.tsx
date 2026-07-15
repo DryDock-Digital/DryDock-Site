@@ -11,6 +11,7 @@ import { Emergency } from './components/Emergency'
 import { FAQ } from './components/FAQ'
 import { FinalCTA } from './components/FinalCTA'
 import { Footer } from './components/Footer'
+import { GeneralHero } from './components/GeneralHero'
 import { Hero } from './components/Hero'
 import { HowItWorks } from './components/HowItWorks'
 import { Pricing } from './components/Pricing'
@@ -25,9 +26,9 @@ import { usePageInteractions } from './hooks/usePageInteractions'
 import { navigate, useRoute } from './lib/router'
 import { useServicePath } from './lib/servicePath'
 
-const LANDING_TITLE = 'Drydock | Bring an app. Or an idea. We make it real.'
+const LANDING_TITLE = 'Drydock | Secure, user-ready custom software'
 const LANDING_DESC =
-  'Senior React + Supabase engineers. Two paths: we audit and fix your AI-built app ($750 production-readiness audit in 3 days), or we build your idea from scratch to the same production bar.'
+  'Senior React + Supabase engineers. Build a custom tool for your team, or bring your idea to life. We audit and finish AI-built apps ($750 production-readiness audit in 3 days), or build yours from scratch to the same production bar.'
 
 export default function App() {
   const { path } = useRoute()
@@ -79,10 +80,14 @@ export default function App() {
     <>
       <SiteHeader />
       <main id="top">
-        {/* Each path brings its OWN hero, which carries the path switcher
-            in the right half of its split. The booking CTA (#book /
-            FinalCTA) is shared by both paths. */}
-        {servicePath === 'refit' ? (
+        {/* Three states. Until the visitor picks a path, the parent-brand
+            GeneralHero stands alone; picking one swaps in that path's own
+            hero + section stack. Every hero carries the path switcher in
+            the right half of its split, and the booking CTA (#book /
+            FinalCTA) is shared by all three. */}
+        {servicePath === null ? (
+          <GeneralHero />
+        ) : servicePath === 'refit' ? (
           <div role="tabpanel" id="panel-refit" aria-labelledby="tab-refit">
             <Hero />
             <Problem />

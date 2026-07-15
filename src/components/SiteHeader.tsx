@@ -15,8 +15,13 @@ export function SiteHeader() {
   // /blog/<slug>, the Link component pushes them back to / and scrolls to
   // the section — the landing panel matches the persisted path, so the
   // anchors still resolve.
+  //
+  // Before a path is chosen no panel is mounted, so there are no sections
+  // to link to: the nav is just the blog.
   const sections =
-    servicePath === 'build'
+    servicePath === null
+      ? [{ to: '/blog', label: 'Blog' }]
+      : servicePath === 'build'
       ? [
           { to: '/#build-problem', label: 'Problem' },
           { to: '/#build-scope', label: 'What you get' },
