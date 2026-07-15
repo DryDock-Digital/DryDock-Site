@@ -5,9 +5,10 @@ service. One conversion goal: get a founder onto the free intro/discovery call (
 
 ## The two paths
 
-Drydock is the parent brand with two service paths. A slim segmented switcher bar
-(`src/components/PathTabs.tsx`; state in `src/lib/servicePath.tsx`) sticks directly
-under the site header like a second header, and each path brings its own hero:
+Drydock is the parent brand with two service paths. Each hero is vertically split: the
+left half is the selected path's own hero copy, and the right half is a rail of two
+stacked, toggleable option cards (`src/components/PathTabs.tsx`; state in
+`src/lib/servicePath.tsx`) that swaps between them. The rail renders inside each hero:
 
 - **Refit** (Path 01) — the original scope: audit, security, and the last 20% of an
   existing AI-built app. `Hero` (the scan-panel hero), then `Problem`, `Emergency`,

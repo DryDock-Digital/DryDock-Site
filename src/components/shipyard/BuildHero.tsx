@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { BOOK_HREF } from '../../constants'
 import { animateCount, setGauge, useOnceInView } from '../../hooks/useGaugeAndCounter'
 import { track } from '../../lib/analytics'
+import { PathTabs } from '../PathTabs'
 import { WaterlineWave } from '../WaterlineWave'
 
 /**
@@ -122,6 +123,9 @@ export function BuildHero() {
               </p>
             </div>
           </div>
+
+          {/* Right half of the split: the path switcher */}
+          <PathTabs />
 
           {/* Stage: dark build-slip panel + light readout */}
           <div

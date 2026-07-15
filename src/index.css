@@ -382,7 +382,7 @@
 }
 
 /* ============================================================
-   HERO  (centered, elegant)
+   HERO  (vertically split: copy left, path rail right, stage below)
    ============================================================ */
 .hero {
   position: relative;
@@ -393,24 +393,29 @@
 }
 .hero-inner {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 92px 0 0;
-  gap: 60px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  text-align: left;
+  padding: 64px 0 0;
+  gap: 44px;
 }
-@media (min-width: 900px) {
+@media (min-width: 980px) {
   .hero-inner {
-    padding: 116px 0 0;
-    gap: 72px;
+    /* row 1: hero copy | path rail — row 2: stage, spanning both */
+    grid-template-columns: minmax(0, 1fr) 352px;
+    column-gap: 56px;
+    row-gap: 64px;
+    padding: 84px 0 0;
+  }
+  .hero-stage {
+    grid-column: 1 / -1;
   }
 }
 .hero-copy {
-  max-width: 740px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .hero-h1 {
@@ -437,7 +442,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 14px 22px;
 }
 /* .hero-tagline removed — the "Bring your app in for a refit." line was
@@ -448,7 +453,7 @@
   font-size: 12px;
   letter-spacing: 0.03em;
   color: var(--ink-3);
-  text-align: center;
+  text-align: left;
 }
 .hero-scanner-link a {
   color: var(--teal);
@@ -468,14 +473,14 @@
    the invoicing/upfront-charges trust signals. */
 .hero-price {
   margin-top: 32px;
-  text-align: center;
+  text-align: left;
   width: 100%;
 }
 .hero-price-headline {
   margin: 0;
   display: flex;
   align-items: baseline;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
   flex-wrap: wrap;
   font-family: var(--display);
@@ -563,6 +568,7 @@
   position: relative;
   width: 100%;
   max-width: 900px;
+  margin-inline: auto;
 }
 .scanpanel {
   position: relative;
@@ -853,94 +859,118 @@
 }
 
 /* ============================================================
-   PATH TABS — the Refit / Shipyard switcher: a slim segmented
-   bar that sticks directly under the site header, like a second
-   header. Each tab's panel brings its own hero.
+   PATH RAIL — the Refit / Shipyard switcher: two option cards
+   stacked vertically in the right half of the hero split. The
+   left half is whichever hero the selected path owns.
    ============================================================ */
-.paths {
-  position: sticky;
-  top: 68px; /* sticky header height */
-  z-index: 40; /* under .site-header (50) */
-  background: var(--header-bg);
-  backdrop-filter: saturate(160%) blur(16px);
-  -webkit-backdrop-filter: saturate(160%) blur(16px);
-  border-bottom: 1px solid var(--line-soft);
-  padding: 9px 0;
+.path-rail {
+  width: 100%;
 }
-.paths .container {
+.path-rail [role='tablist'] {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
 }
-.path-tabs {
-  display: inline-flex;
-  padding: 3px;
-  gap: 3px;
+.path-rail-label {
+  margin: 0 0 14px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.path-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  text-align: left;
+  padding: 18px 20px 16px;
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 999px;
-}
-.path-tab {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 6px 16px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  font: inherit;
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: background 0.18s var(--ease), color 0.18s var(--ease);
+  font: inherit;
+  color: inherit;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease),
+    transform 0.2s var(--ease);
 }
-.path-tab:hover {
-  background: var(--teal-dim);
+.path-card:hover {
+  border-color: var(--teal-line);
+  transform: translateY(-2px);
 }
-.path-tab:focus-visible {
+.path-card:focus-visible {
   outline: 2px solid var(--teal);
   outline-offset: 2px;
 }
-.path-tab .num {
+.path-card .kicker {
   font-family: var(--mono);
-  font-size: 9.5px;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
   color: var(--ink-3);
+  transition: color 0.2s var(--ease);
 }
-.path-tab .name {
+.path-card .title {
   font-family: var(--display);
-  font-size: 13.5px;
+  font-size: 18px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--ink);
+  padding-right: 22px; /* clear the selected dot */
 }
-.path-tab .hint {
-  font-size: 12.5px;
+.path-card .desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.path-card .meta {
+  margin-top: 5px;
+  padding-top: 11px;
+  width: 100%;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
   color: var(--ink-3);
+  transition: color 0.2s var(--ease);
 }
-.path-tab[aria-selected='true'] {
+/* Selected-state dot, top-right */
+.path-card::after {
+  content: '';
+  position: absolute;
+  top: 19px;
+  right: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.path-card[aria-selected='true'] {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 1px var(--teal), 0 16px 36px -20px rgba(188, 96, 56, 0.5);
+}
+.path-card[aria-selected='true'] .kicker {
+  color: var(--teal);
+}
+.path-card[aria-selected='true'] .meta {
+  color: var(--ink-2);
+}
+.path-card[aria-selected='true']::after {
   background: var(--teal);
-}
-.path-tab[aria-selected='true'] .num {
-  color: rgba(255, 255, 255, 0.7);
-}
-.path-tab[aria-selected='true'] .name {
-  color: #fff;
-}
-.path-tab[aria-selected='true'] .hint {
-  color: rgba(255, 255, 255, 0.82);
-}
-@media (max-width: 620px) {
-  .path-tab {
-    padding: 6px 13px;
-  }
-  .path-tab .hint {
-    display: none; /* keep the bar one line on small screens */
-  }
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px var(--teal-dim);
 }
 
-/* With TWO sticky bars (header 68px + path bar ~61px), in-page anchor
-   jumps need extra headroom so section tops aren't hidden behind them. */
+/* Anchor jumps clear the 68px sticky header. */
 main section[id],
 main div[id] {
-  scroll-margin-top: 134px;
+  scroll-margin-top: 84px;
 }
 
 /* ============================================================

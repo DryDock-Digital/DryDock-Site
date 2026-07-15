@@ -13,7 +13,6 @@ import { FinalCTA } from './components/FinalCTA'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { HowItWorks } from './components/HowItWorks'
-import { PathTabs } from './components/PathTabs'
 import { Pricing } from './components/Pricing'
 import { Problem } from './components/Problem'
 import { SampleReport } from './components/SampleReport'
@@ -80,10 +79,9 @@ export default function App() {
     <>
       <SiteHeader />
       <main id="top">
-        {/* The two-path tab switcher opens the page; each path brings its
-            OWN hero inside its panel. The booking CTA (#book / FinalCTA)
-            is shared by both paths. */}
-        <PathTabs />
+        {/* Each path brings its OWN hero, which carries the path switcher
+            in the right half of its split. The booking CTA (#book /
+            FinalCTA) is shared by both paths. */}
         {servicePath === 'refit' ? (
           <div role="tabpanel" id="panel-refit" aria-labelledby="tab-refit">
             <Hero />

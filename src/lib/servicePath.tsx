@@ -14,8 +14,9 @@ import { track } from './analytics'
  *   refit — audit / security / the last 20% of an existing (AI-built) app
  *   build — ground-up "Shipyard" builds from an idea
  *
- * Selected via the PathTabs switcher under the hero. The choice swaps the
- * landing page's section stack (see App.tsx) and the header nav anchors.
+ * Selected via the PathTabs rail in the right half of the hero split. The
+ * choice swaps the landing page's section stack (see App.tsx), which hero
+ * renders, and the header nav anchors.
  */
 export type ServicePath = 'refit' | 'build'
 

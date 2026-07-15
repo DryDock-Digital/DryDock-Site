@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { BOOK_HREF, SCANNER_URL } from '../constants'
 import { animateCount, setGauge, useOnceInView } from '../hooks/useGaugeAndCounter'
 import { track } from '../lib/analytics'
+import { PathTabs } from './PathTabs'
 import { WaterlineWave } from './WaterlineWave'
 
 /**
@@ -159,6 +160,9 @@ export function Hero() {
               </p>
             </div>
           </div>
+
+          {/* Right half of the split: the path switcher */}
+          <PathTabs />
 
           {/* Stage: dark scan panel + light readout */}
           <div
