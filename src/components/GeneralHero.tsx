@@ -26,8 +26,7 @@ export function GeneralHero() {
               <span className="accent">custom software.</span>
             </h1>
             <p className="hero-sub reveal">
-              Build a custom tool for your team, or bring your idea to life. Either way, a
-              senior crew takes it the whole way to production.
+              Build a custom tool for your team, Bring your idea to life, Shore-up what you've already made... Your premier development team is here to make your... success
             </p>
             <ul className="hero-pillars reveal" aria-label="What we cover">
               <li className="hero-pillar">
