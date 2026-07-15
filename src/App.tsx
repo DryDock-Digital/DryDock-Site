@@ -1,12 +1,18 @@
 import { useEffect } from 'react'
 import { BlogIndex } from './components/blog/BlogIndex'
 import { BlogPost } from './components/blog/BlogPost'
+import { BuildFAQ } from './components/shipyard/BuildFAQ'
+import { BuildPricing } from './components/shipyard/BuildPricing'
+import { BuildProblem } from './components/shipyard/BuildProblem'
+import { BuildProcess } from './components/shipyard/BuildProcess'
+import { BuildScope } from './components/shipyard/BuildScope'
 import { Emergency } from './components/Emergency'
 import { FAQ } from './components/FAQ'
 import { FinalCTA } from './components/FinalCTA'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { HowItWorks } from './components/HowItWorks'
+import { PathTabs } from './components/PathTabs'
 import { Pricing } from './components/Pricing'
 import { Problem } from './components/Problem'
 import { SampleReport } from './components/SampleReport'
@@ -17,17 +23,20 @@ import { WhatWeDo } from './components/WhatWeDo'
 import { WhyDrydock } from './components/WhyDrydock'
 import { usePageInteractions } from './hooks/usePageInteractions'
 import { navigate, useRoute } from './lib/router'
+import { useServicePath } from './lib/servicePath'
 
-const LANDING_TITLE = 'Drydock | You built it with AI. We make it real.'
+const LANDING_TITLE = 'Drydock | Bring an app. Or an idea. We make it real.'
 const LANDING_DESC =
-  'Senior React + Supabase engineers who audit and fix AI-built apps. A $750 production-readiness audit in 3 days. Secured, hardened, and ready for real users.'
+  'Senior React + Supabase engineers. Two paths: we audit and fix your AI-built app ($750 production-readiness audit in 3 days), or we build your idea from scratch to the same production bar.'
 
 export default function App() {
-  // Wire up scroll-progress, scroll reveal, html.anim toggle (re-runs per route
-  // because each route mounts a fresh tree of .reveal elements).
-  usePageInteractions()
-
   const { path } = useRoute()
+  const { path: servicePath } = useServicePath()
+
+  // Wire up scroll-progress, scroll reveal, html.anim toggle. Re-runs per
+  // route AND per selected service path, because each mounts a fresh tree
+  // of .reveal elements.
+  usePageInteractions(`${path}:${servicePath}`)
 
   // Reset meta to the landing defaults when we leave a sub-route.
   useEffect(() => {
@@ -70,19 +79,35 @@ export default function App() {
     <>
       <SiteHeader />
       <main id="top">
+        {/* Shared parent-brand hero, then the two-path tab switcher. The
+            selected tab swaps the section stack below; the booking CTA
+            (#book / FinalCTA) is shared by both paths. */}
         <Hero />
-        <Problem />
-        {/* Emergency strip surfaced HIGH on the page, right after the Problem section
-            (per the design's final iteration — not buried near the FAQ). */}
-        <Emergency />
-        <WhatWeDo />
-        {/* The interactive centerpiece. */}
-        <SampleReport />
-        <WhyDrydock />
-        <SocialProof />
-        <Pricing />
-        <HowItWorks />
-        <FAQ />
+        <PathTabs />
+        {servicePath === 'refit' ? (
+          <div role="tabpanel" id="panel-refit" aria-labelledby="tab-refit">
+            <Problem />
+            {/* Emergency strip surfaced HIGH on the page, right after the Problem
+                section (per the design's final iteration — not buried near the FAQ). */}
+            <Emergency />
+            <WhatWeDo />
+            {/* The interactive centerpiece. */}
+            <SampleReport />
+            <WhyDrydock />
+            <SocialProof />
+            <Pricing />
+            <HowItWorks />
+            <FAQ />
+          </div>
+        ) : (
+          <div role="tabpanel" id="panel-build" aria-labelledby="tab-build">
+            <BuildProblem />
+            <BuildScope />
+            <BuildProcess />
+            <BuildPricing />
+            <BuildFAQ />
+          </div>
+        )}
         <FinalCTA />
       </main>
       <Footer />

@@ -1,36 +1,56 @@
 import { BOOK_HREF } from '../constants'
 import { track } from '../lib/analytics'
+import { useServicePath } from '../lib/servicePath'
 import { CalendlyEmbed } from './CalendlyEmbed'
 import { LeadForm } from './LeadForm'
 import { WaterlineWave } from './WaterlineWave'
 
+// Head copy per service path — the booking section itself (Calendly + lead
+// form) is shared, since both paths start with the same free 20-min call.
+const COPY = {
+  refit: {
+    eyebrow: 'Find out exactly where your app stands',
+    line1: 'A senior engineer.',
+    line2: 'Your whole app reviewed.',
+    lead: 'Start with a free 20-minute intro call. If the audit’s a fit, we invoice $750 (no upfront charges through the site) and the full amount comes off your fix.',
+    micro: 'No judgment. No hourly meter. No surprise charges. Just answers.',
+    cta: 'Book a free intro call',
+  },
+  build: {
+    eyebrow: 'Turn the idea into a launch date',
+    line1: 'A senior crew.',
+    line2: 'Your idea, launched.',
+    lead: 'Start with a free 20-minute discovery call. If it’s a fit, you get a fixed-price proposal in writing. Nothing is charged through the site.',
+    micro: 'No agency theatre. No hourly meter. Just a plan and a price.',
+    cta: 'Book a free discovery call',
+  },
+} as const
+
 export function FinalCTA() {
+  const { path } = useServicePath()
+  const copy = COPY[path]
+
   return (
     <section className="section final" id="book">
       <div className="blueprint" />
       <div className="container">
         <div className="final-head">
-          <p className="eyebrow teal center reveal">Find out exactly where your app stands</p>
+          <p className="eyebrow teal center reveal">{copy.eyebrow}</p>
           <h2 className="h-sec reveal">
-            A senior engineer.
+            {copy.line1}
             <br />
-            <span className="accent">Your whole app reviewed.</span>
+            <span className="accent">{copy.line2}</span>
           </h2>
-          <p className="lead reveal">
-            Start with a free 20-minute intro call. If the audit&rsquo;s a fit, we invoice $750
-            (no upfront charges through the site) and the full amount comes off your fix.
-          </p>
+          <p className="lead reveal">{copy.lead}</p>
           <div className="final-cta-row reveal">
             <a
               href={BOOK_HREF}
               className="btn btn-teal"
-              onClick={() => track('cta_book_clicked', { location: 'final' })}
+              onClick={() => track('cta_book_clicked', { location: 'final', path })}
             >
-              Book a free intro call
+              {copy.cta}
             </a>
-            <p className="final-micro">
-              No judgment. No hourly meter. No surprise charges. Just answers.
-            </p>
+            <p className="final-micro">{copy.micro}</p>
           </div>
         </div>
 

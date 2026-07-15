@@ -1,7 +1,25 @@
 # Drydock — marketing site
 
-Single-page marketing site for **Drydock**, the React + Supabase production-readiness
-service. One conversion goal: get a worried founder to book a $750 audit.
+Single-page marketing site for **Drydock**, the React + Supabase senior engineering
+service. One conversion goal: get a founder onto the free intro/discovery call (`#book`).
+
+## The two paths
+
+Drydock is the parent brand with two service paths, switched by the tab cards directly
+under the shared hero (`src/components/PathTabs.tsx`; state in `src/lib/servicePath.tsx`):
+
+- **Refit** (Path 01) — the original scope: audit, security, and the last 20% of an
+  existing AI-built app. Sections: `Problem`, `Emergency`, `WhatWeDo`, `SampleReport`,
+  `WhyDrydock`, `SocialProof`, `Pricing`, `HowItWorks`, `FAQ`.
+- **Shipyard** (Path 02) — ground-up builds from an idea. Sections live in
+  `src/components/shipyard/`: `BuildProblem`, `BuildScope`, `BuildProcess`,
+  `BuildPricing`, `BuildFAQ`. (The dir is named `shipyard/`, not `build/`, because the
+  root `.gitignore` ignores any `build/` directory.)
+
+The hero, header, booking section (`FinalCTA` adapts its copy per path), and footer are
+shared. The selected path persists per browser session and the header nav anchors follow
+it. Shared section ids (`#pricing`, `#how`, `#faq`, `#book`) exist on both panels; ids
+unique to one panel (`#report`, `#build-scope`, …) pick the right tab on deep links.
 
 Stack: **Vite + React + TypeScript + Tailwind CSS**. Deploys to **Vercel** as a static site.
 

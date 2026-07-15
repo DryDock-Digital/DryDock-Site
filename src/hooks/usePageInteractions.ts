@@ -7,8 +7,12 @@ import { useEffect } from 'react'
  *  - `.reveal` → `.reveal.in` on scroll, with a failsafe that snaps
  *     everything visible if the compositor stalls (mirrors the design's
  *     defensive pattern for low-power / backgrounded tabs)
+ *
+ * `revealKey` re-runs the effect whenever a fresh tree of .reveal elements
+ * mounts (route changes, Refit/Shipyard tab switches) so new elements get
+ * their stagger delays and an immediate visibility check.
  */
-export function usePageInteractions() {
+export function usePageInteractions(revealKey?: unknown) {
   useEffect(() => {
     const root = document.documentElement
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -83,7 +87,7 @@ export function usePageInteractions() {
       if (t1) window.clearTimeout(t1)
       if (t2) window.clearTimeout(t2)
     }
-  }, [])
+  }, [revealKey])
 }
 
 // useTriageRoute was a hash-based view toggle; replaced by the path-based

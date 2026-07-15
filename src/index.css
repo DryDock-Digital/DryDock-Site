@@ -462,56 +462,9 @@
   border-bottom-color: var(--cyan);
 }
 
-/* ---------- Hero price block ----------
-   Replaces the older small "trust pills" + tagline with a single,
-   $750-led element. Big clay number sits baseline-aligned next to a
-   smaller "audit · 3-business-day report" line; mono meta below
-   covers the invoicing/upfront-charges trust signals. */
-.hero-price {
-  margin-top: 32px;
-  text-align: center;
-  width: 100%;
-}
-.hero-price-headline {
-  margin: 0;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  font-family: var(--display);
-  color: var(--ink);
-}
-.hero-price-amount {
-  font-size: clamp(34px, 4.4vw, 44px);
-  font-weight: 600;
-  color: var(--teal);
-  letter-spacing: -0.025em;
-  line-height: 1;
-}
-.hero-price-context {
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-.hero-price-meta {
-  margin: 12px 0 0;
-  font-family: var(--mono);
-  font-size: 11.5px;
-  letter-spacing: 0.03em;
-  color: var(--ink-3);
-}
-@media (max-width: 760px) {
-  .hero-price {
-    margin-top: 24px;
-  }
-  .hero-price-amount {
-    font-size: 36px;
-  }
-  .hero-price-context {
-    font-size: 15.5px;
-  }
-}
+/* The .hero-price block ($750-led element) moved out of the shared hero
+   when the two-path split landed — the price now lives on the Refit tab
+   card (.path-tab .meta) and in the Refit pricing section. */
 
 /* ---------- Hero pillars (Security / Scalability / Launch-ready) ----------
    Three short capability blurbs that sit between the subhead and the CTA,
@@ -795,6 +748,122 @@
    the wave IS the visual closing element before the footer. */
 .section.final {
   padding-bottom: 0;
+}
+
+/* ============================================================
+   PATH TABS — the Refit / Shipyard switcher under the hero
+   ============================================================ */
+.paths {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line-soft);
+  padding: 56px 0 64px;
+  scroll-margin-top: 68px; /* sticky header height */
+}
+@media (min-width: 900px) {
+  .paths {
+    padding: 64px 0 76px;
+  }
+}
+.paths .eyebrow.center {
+  margin-bottom: 26px;
+}
+.path-tabs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+@media (min-width: 760px) {
+  .path-tabs {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+}
+.path-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  padding: 24px 26px 22px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.path-tab:hover {
+  border-color: var(--teal-line);
+  transform: translateY(-2px);
+}
+.path-tab:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+.path-tab .kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  transition: color 0.2s ease;
+}
+.path-tab .title {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.path-tab .desc {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.path-tab .meta {
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  border-top: 1px solid var(--line-soft);
+  padding-top: 12px;
+  width: 100%;
+  transition: color 0.2s ease;
+}
+.path-tab[aria-selected='true'] {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 1px var(--teal), 0 14px 34px -18px rgba(188, 96, 56, 0.45);
+  background: var(--panel);
+}
+.path-tab[aria-selected='true'] .kicker {
+  color: var(--teal);
+}
+.path-tab[aria-selected='true'] .meta {
+  color: var(--ink-2);
+}
+/* Little "selected" tick in the top-right of the active card */
+.path-tab {
+  position: relative;
+}
+.path-tab::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.path-tab[aria-selected='true']::after {
+  background: var(--teal);
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px var(--teal-dim);
 }
 
 /* ============================================================

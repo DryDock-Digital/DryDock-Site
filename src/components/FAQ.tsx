@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { FaqList, type FaqItem } from './FaqList'
 
-const faqs = [
+const faqs: FaqItem[] = [
   {
     q: 'Will you judge my code / my AI-built app?',
     a: 'Never. Honestly, we love AI-built apps. They’re why we exist, and you got further than most people expect. Our job is to make it real, not to critique how you got here.',
@@ -36,41 +36,12 @@ const faqs = [
 ]
 
 export function FAQ() {
-  // Single-open accordion, first item open by default (matches the design).
-  const [open, setOpen] = useState<number | null>(0)
-
   return (
     <section className="section bg-fog" id="faq">
       <div className="container">
         <p className="eyebrow reveal">FAQ</p>
         <h2 className="h-sec reveal">Questions, answered straight.</h2>
-        <div className="faq-list reveal">
-          {faqs.map((item, i) => {
-            const isOpen = open === i
-            return (
-              <div className={`faq-item ${isOpen ? 'open' : ''}`} key={item.q}>
-                <button
-                  className="faq-q"
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => setOpen(isOpen ? null : i)}
-                >
-                  {item.q}
-                  <span className="chev">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </span>
-                </button>
-                <div className="faq-a">
-                  <div className="faq-a-inner">
-                    <p>{item.a}</p>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
+        <FaqList items={faqs} />
       </div>
     </section>
   )

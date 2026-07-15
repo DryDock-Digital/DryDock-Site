@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { BOOK_HREF, SCANNER_URL } from '../constants'
 import { animateCount, setGauge, useOnceInView } from '../hooks/useGaugeAndCounter'
 import { track } from '../lib/analytics'
+import { useServicePath } from '../lib/servicePath'
 import { WaterlineWave } from './WaterlineWave'
 
 /**
@@ -12,6 +13,11 @@ import { WaterlineWave } from './WaterlineWave'
  *  - layered animated waterline at the bottom
  */
 export function Hero() {
+  // The hero is shared by both service paths; the scan-panel visual links
+  // into the sample report, which only exists on the Refit panel, so the
+  // readout CTA switches paths before scrolling.
+  const { select } = useServicePath()
+
   const reduceMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -89,14 +95,14 @@ export function Hero() {
               Senior engineers · React + Supabase production specialists
             </p>
             <h1 className="hero-h1 reveal">
-              You built it with AI.
+              Bring an app. Or an idea.
               <br />
               <span className="accent">We make it real.</span>
             </h1>
             <p className="hero-sub reveal">
-              Lovable, Bolt, v0, and Cursor get you 80% there. A senior engineering team,
-              humans with years of production experience, takes your React + Supabase app the
-              last 20%.
+              Drydock is a senior engineering crew with two ways in: we audit, secure, and
+              finish what you built with Lovable, Bolt, v0, or Cursor, or we build your idea
+              from the first line of code. Either way, it leaves the dock production-ready.
             </p>
             <ul className="hero-pillars reveal" aria-label="What we cover">
               <li className="hero-pillar">
@@ -129,15 +135,15 @@ export function Hero() {
               >
                 Book a free intro call
               </a>
-              <a href="#report" className="linkarrow">
-                See a sample audit report
+              <a href="#paths" className="linkarrow">
+                Pick your path
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </a>
             </div>
             <p className="hero-scanner-link reveal">
-              Or check yours yourself:{' '}
+              Already built something? Check it yourself:{' '}
               <a
                 href={SCANNER_URL}
                 target="_blank"
@@ -147,17 +153,6 @@ export function Hero() {
                 free 30-sec exposure scan&nbsp;→
               </a>
             </p>
-            <div className="hero-price reveal">
-              <p className="hero-price-headline">
-                <span className="hero-price-amount">$750</span>
-                <span className="hero-price-context">
-                  audit &middot; 3-business-day report
-                </span>
-              </p>
-              <p className="hero-price-meta">
-                Invoiced after our free intro call &middot; No upfront charges
-              </p>
-            </div>
           </div>
 
           {/* Stage: dark scan panel + light readout */}
@@ -246,7 +241,14 @@ export function Hero() {
                   <span className="bad">Not ready to ship</span> · 6 issues found
                 </div>
               </div>
-              <a href="#report" className="readout-cta linkarrow">
+              <a
+                href="#report"
+                className="readout-cta linkarrow"
+                onClick={(e) => {
+                  e.preventDefault()
+                  select('refit', { scrollTo: 'report', source: 'hero_readout' })
+                }}
+              >
                 Open report
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M13 6l6 6-6 6" />

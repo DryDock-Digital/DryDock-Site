@@ -1,23 +1,38 @@
 import { track } from '../lib/analytics'
 import { Link, useRoute } from '../lib/router'
+import { useServicePath } from '../lib/servicePath'
 import { Logo } from './Logo'
 
 export function SiteHeader() {
   const { path } = useRoute()
+  const { path: servicePath } = useServicePath()
   const onLanding = path === '/'
 
-  // Nav anchors point at the landing page sections. When the visitor is
-  // already on /, those resolve as simple in-page hashes (no route swap).
-  // When the visitor is on /blog or /blog/<slug>, the Link component pushes
-  // them back to / and scrolls to the section.
-  const sections = [
-    { to: '/#problem', label: 'Problem' },
-    { to: '/#what-we-do', label: 'What we do' },
-    { to: '/#report', label: 'Sample report' },
-    { to: '/#pricing', label: 'Pricing' },
-    { to: '/blog', label: 'Blog' },
-    { to: '/#faq', label: 'FAQ' },
-  ]
+  // Nav anchors point at the landing page sections OF THE ACTIVE SERVICE
+  // PATH (Refit vs Shipyard), so every visible link resolves to a mounted
+  // section. When the visitor is already on /, those resolve as simple
+  // in-page hashes (no route swap). When the visitor is on /blog or
+  // /blog/<slug>, the Link component pushes them back to / and scrolls to
+  // the section — the landing panel matches the persisted path, so the
+  // anchors still resolve.
+  const sections =
+    servicePath === 'build'
+      ? [
+          { to: '/#build-problem', label: 'Problem' },
+          { to: '/#build-scope', label: 'What you get' },
+          { to: '/#how', label: 'Process' },
+          { to: '/#pricing', label: 'Pricing' },
+          { to: '/blog', label: 'Blog' },
+          { to: '/#faq', label: 'FAQ' },
+        ]
+      : [
+          { to: '/#problem', label: 'Problem' },
+          { to: '/#what-we-do', label: 'What we do' },
+          { to: '/#report', label: 'Sample report' },
+          { to: '/#pricing', label: 'Pricing' },
+          { to: '/blog', label: 'Blog' },
+          { to: '/#faq', label: 'FAQ' },
+        ]
 
   return (
     <header className="site-header">
