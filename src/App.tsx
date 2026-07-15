@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { BlogIndex } from './components/blog/BlogIndex'
 import { BlogPost } from './components/blog/BlogPost'
 import { BuildFAQ } from './components/shipyard/BuildFAQ'
+import { BuildHero } from './components/shipyard/BuildHero'
 import { BuildPricing } from './components/shipyard/BuildPricing'
 import { BuildProblem } from './components/shipyard/BuildProblem'
 import { BuildProcess } from './components/shipyard/BuildProcess'
@@ -79,13 +80,13 @@ export default function App() {
     <>
       <SiteHeader />
       <main id="top">
-        {/* Shared parent-brand hero, then the two-path tab switcher. The
-            selected tab swaps the section stack below; the booking CTA
-            (#book / FinalCTA) is shared by both paths. */}
-        <Hero />
+        {/* The two-path tab switcher opens the page; each path brings its
+            OWN hero inside its panel. The booking CTA (#book / FinalCTA)
+            is shared by both paths. */}
         <PathTabs />
         {servicePath === 'refit' ? (
           <div role="tabpanel" id="panel-refit" aria-labelledby="tab-refit">
+            <Hero />
             <Problem />
             {/* Emergency strip surfaced HIGH on the page, right after the Problem
                 section (per the design's final iteration — not buried near the FAQ). */}
@@ -101,6 +102,7 @@ export default function App() {
           </div>
         ) : (
           <div role="tabpanel" id="panel-build" aria-labelledby="tab-build">
+            <BuildHero />
             <BuildProblem />
             <BuildScope />
             <BuildProcess />

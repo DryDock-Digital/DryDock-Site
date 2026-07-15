@@ -5,21 +5,22 @@ service. One conversion goal: get a founder onto the free intro/discovery call (
 
 ## The two paths
 
-Drydock is the parent brand with two service paths, switched by the tab cards directly
-under the shared hero (`src/components/PathTabs.tsx`; state in `src/lib/servicePath.tsx`):
+Drydock is the parent brand with two service paths. The tab cards
+(`src/components/PathTabs.tsx`; state in `src/lib/servicePath.tsx`) OPEN the page,
+directly under the sticky header, and each path brings its own hero:
 
 - **Refit** (Path 01) — the original scope: audit, security, and the last 20% of an
-  existing AI-built app. Sections: `Problem`, `Emergency`, `WhatWeDo`, `SampleReport`,
-  `WhyDrydock`, `SocialProof`, `Pricing`, `HowItWorks`, `FAQ`.
+  existing AI-built app. `Hero` (the scan-panel hero), then `Problem`, `Emergency`,
+  `WhatWeDo`, `SampleReport`, `WhyDrydock`, `SocialProof`, `Pricing`, `HowItWorks`, `FAQ`.
 - **Shipyard** (Path 02) — ground-up builds from an idea. Sections live in
-  `src/components/shipyard/`: `BuildProblem`, `BuildScope`, `BuildProcess`,
-  `BuildPricing`, `BuildFAQ`. (The dir is named `shipyard/`, not `build/`, because the
-  root `.gitignore` ignores any `build/` directory.)
+  `src/components/shipyard/`: `BuildHero` (the build-slip hero), `BuildProblem`,
+  `BuildScope`, `BuildProcess`, `BuildPricing`, `BuildFAQ`. (The dir is named
+  `shipyard/`, not `build/`, because the root `.gitignore` ignores any `build/` dir.)
 
-The hero, header, booking section (`FinalCTA` adapts its copy per path), and footer are
-shared. The selected path persists per browser session and the header nav anchors follow
-it. Shared section ids (`#pricing`, `#how`, `#faq`, `#book`) exist on both panels; ids
-unique to one panel (`#report`, `#build-scope`, …) pick the right tab on deep links.
+The header, booking section (`FinalCTA` adapts its copy per path), and footer are shared.
+The selected path persists per browser session and the header nav anchors follow it.
+Shared section ids (`#pricing`, `#how`, `#faq`, `#book`) exist on both panels; ids unique
+to one panel (`#report`, `#build-scope`, …) pick the right tab on deep links.
 
 Stack: **Vite + React + TypeScript + Tailwind CSS**. Deploys to **Vercel** as a static site.
 
