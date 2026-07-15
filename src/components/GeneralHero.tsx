@@ -21,12 +21,12 @@ export function GeneralHero() {
               Senior engineers · React + Supabase production specialists
             </p>
             <h1 className="hero-h1 reveal">
-              Secure, user-ready
+              Secure. User-Ready.
               <br />
-              <span className="accent">custom software.</span>
+              <span className="accent">Custom Software.</span>
             </h1>
             <p className="hero-sub reveal">
-              Build a custom tool for your team, Bring your idea to life, Shore-up what you've already made... Your premier development team is here to make your... success
+              Build a custom tool for your team, Bring your idea to life, or Shore-up what you've already made. Your premier development team is here for your success.
             </p>
             <ul className="hero-pillars reveal" aria-label="What we cover">
               <li className="hero-pillar">
