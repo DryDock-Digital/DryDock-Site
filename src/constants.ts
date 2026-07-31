@@ -6,7 +6,7 @@
 // The Calendly event represents the FREE 20-min intro call — there is no
 // upfront payment. The $750 audit is invoiced manually after the call, only
 // if both sides agree it's a fit.
-export const CALENDLY_URL = 'https://calendly.com/hello-drydock/30min'
+export const CALENDLY_URL = 'https://calendly.com/aaron-drydock/30min'
 
 // Formspree endpoints. Each form has its own so submissions arrive in
 // dedicated threads, with their own subject prefixes / inbox rules.
