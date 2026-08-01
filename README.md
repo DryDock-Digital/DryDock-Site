@@ -68,7 +68,7 @@ All endpoints live in [`src/constants.ts`](src/constants.ts):
 | `LEAD_FORM_ENDPOINT`    | POST target for the lead form                                                         | Formspree `xbdeyrzk`                   |
 | `TRIAGE_FORM_ENDPOINT`  | POST target for the emergency triage form                                             | Formspree `xjgdrbaa`                   |
 | `SAMPLE_REPORT_URL`     | Sample audit report PDF (link in hero/footer)                                         | Drop the file in `public/`             |
-| `CONTACT_EMAIL`         | Single email all comms route to                                                       | `hello@drydock.digital`                |
+| `CONTACT_EMAIL`         | Single email all comms route to                                                       | `aaron@drydock.digital`                |
 | `EMERGENCY_EMAIL`       | Alias of `CONTACT_EMAIL` — kept separate so you can split the inbox later             | same as `CONTACT_EMAIL`                |
 | `BOOK_HREF`             | In-page anchor every "book" CTA uses (drops the visitor on the Calendly embed)        | `#book`                                |
 
@@ -84,12 +84,12 @@ contains the `YOUR-CALENDLY-HANDLE` placeholder, an inline note is shown instead
 The lead form and the emergency triage form both go through
 [`src/lib/submitForm.ts`](src/lib/submitForm.ts). If `LEAD_FORM_ENDPOINT` is still the
 placeholder, submission opens the user's email client with a pre-filled message to
-`CONTACT_EMAIL` — so every form on the site reaches `hello@drydock.digital` with **zero**
+`CONTACT_EMAIL` — so every form on the site reaches `aaron@drydock.digital` with **zero**
 backend setup.
 
 To switch to a real HTTP endpoint:
 
-1. Create a form (Formspree, Basin, Web3Forms, etc.) configured to deliver to `hello@drydock.digital`.
+1. Create a form (Formspree, Basin, Web3Forms, etc.) configured to deliver to `aaron@drydock.digital`.
 2. Replace `LEAD_FORM_ENDPOINT` with the endpoint URL.
 3. The submit helper auto-detects the change and switches from mailto to a JSON POST.
 

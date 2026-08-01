@@ -21,7 +21,7 @@ export const TRIAGE_FORM_ENDPOINT = 'https://formspree.io/f/xjgdrbaa'
 export const SAMPLE_REPORT_URL = '/sample-audit-report.pdf'
 
 // Single email for ALL comms — leads, triage, footer, mailto fallbacks.
-export const CONTACT_EMAIL = 'hello@drydock.digital'
+export const CONTACT_EMAIL = 'aaron@drydock.digital'
 
 // Convenience alias used by the emergency triage flow. Same inbox — the
 // "URGENT" prefix in the subject is what surfaces priority.
