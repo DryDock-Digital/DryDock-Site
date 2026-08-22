@@ -1,53 +1,20 @@
-import { useEffect, useMemo, useRef } from 'react'
-import { CALENDLY_URL } from '../constants'
+import { BOOKING_URL } from '../constants'
 import { track } from '../lib/analytics'
 import { useOnceInView } from '../hooks/useGaugeAndCounter'
 
-const CALENDLY_SCRIPT_SRC = 'https://assets.calendly.com/assets/external/widget.js'
-
 /**
- * Inline Calendly embed, themed to the Linen palette.
+ * Inline Google Calendar appointment-scheduling embed.
  *
- * Uses Calendly's official widget.js (no new npm dep) — loads the script
- * once per page, then mounts a `.calendly-inline-widget` div which Calendly
- * fills with its iframe.
+ * Google's scheduling page is just an iframe — no external script needed.
  *
- * Replace CALENDLY_URL in src/constants.ts with your real event link.
+ * Replace BOOKING_URL in src/constants.ts with your real schedule link.
  */
 export function CalendlyEmbed() {
-  const containerRef = useRef<HTMLDivElement>(null)
   // Fire an analytics event the first time the booking widget enters view —
-  // gives us the "saw the Calendly" denominator for the booking funnel.
+  // gives us the "saw the booking widget" denominator for the booking funnel.
   const viewRef = useOnceInView(() => track('calendly_viewed'), 0.3)
 
-  // Build the widget URL with theme params matching Linen.
-  // Calendly accepts colors WITHOUT the `#` prefix.
-  const widgetUrl = useMemo(() => {
-    const params = new URLSearchParams({
-      hide_event_type_details: '1',
-      hide_gdpr_banner: '1',
-      primary_color: 'BC6038', // --teal (clay)
-      text_color: '2C241B', // --ink
-      background_color: 'FCF8F1', // --bg-2
-    })
-    const sep = CALENDLY_URL.includes('?') ? '&' : '?'
-    return `${CALENDLY_URL}${sep}${params.toString()}`
-  }, [])
-
-  useEffect(() => {
-    // Inject Calendly's script exactly once. Idempotent across remounts.
-    let script = document.querySelector<HTMLScriptElement>(
-      `script[src="${CALENDLY_SCRIPT_SRC}"]`,
-    )
-    if (!script) {
-      script = document.createElement('script')
-      script.src = CALENDLY_SCRIPT_SRC
-      script.async = true
-      document.body.appendChild(script)
-    }
-  }, [])
-
-  const isPlaceholder = CALENDLY_URL.includes('YOUR-CALENDLY-HANDLE')
+  const isPlaceholder = BOOKING_URL.includes('YOUR-')
 
   return (
     <div
@@ -61,21 +28,23 @@ export function CalendlyEmbed() {
       </p>
 
       {isPlaceholder ? (
-        // Honest placeholder until CALENDLY_URL is set.
+        // Honest placeholder until BOOKING_URL is set.
         <div className="cal-placeholder">
-          <p className="mono">Calendly URL not yet configured.</p>
+          <p className="mono">Booking URL not yet configured.</p>
           <p>
-            Paste your full Calendly event link into{' '}
-            <code>CALENDLY_URL</code> in <code>src/constants.ts</code> and the embed will appear
+            Paste your full Google Calendar appointment schedule link into{' '}
+            <code>BOOKING_URL</code> in <code>src/constants.ts</code> and the embed will appear
             here.
           </p>
         </div>
       ) : (
-        <div
-          ref={containerRef}
+        <iframe
           className="calendly-inline-widget"
-          data-url={widgetUrl}
-          style={{ minWidth: 320, height: 680 }}
+          src={BOOKING_URL}
+          style={{ minWidth: 320, border: 0 }}
+          width="100%"
+          height={680}
+          frameBorder={0}
         />
       )}
 

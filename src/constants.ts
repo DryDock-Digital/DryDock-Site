@@ -1,12 +1,13 @@
 // Centralized integration endpoints / URLs. Swap each when ready.
 
-// Calendly inline embed URL — the full event link from your Calendly dashboard.
-// Theme params for Linen are appended automatically in CalendlyEmbed.tsx.
+// Google Calendar Appointment Scheduling embed URL — the full schedule link
+// from Google Calendar's "Appointment schedules" page.
 //
-// The Calendly event represents the FREE 20-min intro call — there is no
-// upfront payment. The $750 audit is invoiced manually after the call, only
-// if both sides agree it's a fit.
-export const CALENDLY_URL = 'https://calendly.com/d/dvpm-k9k-rrg/30-minuets-w-drydock'
+// The booking represents the FREE 20-min intro call — there is no upfront
+// payment. The $750 audit is invoiced manually after the call, only if both
+// sides agree it's a fit.
+export const BOOKING_URL =
+  'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2WTjJgnsjeDyUm7yCMhEacNYf2vBmtF6IMTYV-Va40zw38jIcGU1vF8vshRGs3V6bccaPv4Bv5?gv=true'
 
 // Formspree endpoints. Each form has its own so submissions arrive in
 // dedicated threads, with their own subject prefixes / inbox rules.
